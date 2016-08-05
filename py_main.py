@@ -3,7 +3,7 @@ import PyPR2
 import time
 
 def main():
-  time.sleep(5)
+  
 
   rs = RobotScript()
 
