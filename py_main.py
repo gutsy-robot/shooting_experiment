@@ -6,10 +6,10 @@ import commands
 def main():
   
 
-  play()
+  
 
 
-def play():
+
 	
 	rs = RobotScript()  
   	channel_speech_id = rs.addChannel("say")
