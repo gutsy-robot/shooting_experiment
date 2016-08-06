@@ -4,6 +4,6 @@ import time
 import commands
 
 def main():
-  
+  rs = RobotScript()
 
-  commands.generate()
+  commands.generate(rs)
