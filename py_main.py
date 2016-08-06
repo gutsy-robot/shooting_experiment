@@ -7,6 +7,7 @@ def main():
   
 
   a = commands()
+  a.A()
 
 
 
