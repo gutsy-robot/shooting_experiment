@@ -8,7 +8,7 @@ def main():
 
   
 
-
+	time.sleep(10.0)
 
 	
 	rs = RobotScript()  
