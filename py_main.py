@@ -1,11 +1,12 @@
 from SIMKit import RobotScript, Event
 import PyPR2
 import time
+import commands
 
 def main():
   
 
-  PyPR2.say("Welcome")
+  a = commands()
 
 
 
