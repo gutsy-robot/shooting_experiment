@@ -2,13 +2,9 @@ from SIMKit import RobotScript, Event
 import PyPR2
 
 
-class commands:
-	def __init__(self,sc):
-		self.script= sc
-	
-
-	def play(self):
-		self.script.play()
-
-
+def generate():
+	rs = RobotScript()
+	channel_speech_id = rs.addChannel("say")
+	asset_helloworld_id = rs.addAssetToChannel(channel_speech_id, [2], ("Hello world!",))
+	rs.play()
 		
