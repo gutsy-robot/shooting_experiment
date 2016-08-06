@@ -6,8 +6,15 @@ import commands
 def main():
   
 
-  a = commands()
-  a.A()
+  rs = RobotScript()
+
+  channel_speech_id = rs.addChannel("say")
+	
+  asset_hello_id = rs.addAssetToChannel(channel_speech_id, [2], ("Hello!"))
+  
+  
+  a = commands(rs)
+  a.play()
 
 
 
