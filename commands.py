@@ -6,7 +6,7 @@ def generate():
 	
 	rs = RobotScript()
 	channel_speech_id = rs.addChannel("say")
-	asset_helloworld_id = rs.addAssetToChannel(channel_speech_id, [0], ("Hello world!",))
+	asset_helloworld_id = rs.addAssetToChannel(channel_speech_id, [5], ("Hello world!",))
 	rs.play()
 
 
