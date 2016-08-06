@@ -10,7 +10,7 @@ def main():
 
 
 def play():
-	
+	time.sleep(10.0)
 	PyPR2.say("Hi")  
   
 
