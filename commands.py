@@ -3,5 +3,5 @@ from SIMKit import RobotScript, Event
 
 
 class commands:
-	def A():
+	def A(self):
 		PyPR2.say("Hi")
