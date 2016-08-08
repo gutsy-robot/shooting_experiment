@@ -6,4 +6,4 @@ import commands
 def main():
   
 
-  commands.generate()
+  
