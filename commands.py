@@ -5,14 +5,11 @@ import PyPR2
 
 def generate():
 	
-	rs = create_obj()
-
-	channel_torso_id = rs.addChannel("moveTorsoBy")
-	asset_helloworld_id = rs.addAssetToChannel(channel_torso_id, [5], (0.06,10))
+	
+	rs = RobotScript()
+	channel_speech_id = rs.addChannel("say")
+	asset_helloworld_id = rs.addAssetToChannel(channel_speech_id, [2], ("Hi There!"))
 	return rs
 
 
-def create_obj():
-	a = RobotScript()
-	return a
-	
+
