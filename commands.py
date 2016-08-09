@@ -31,6 +31,6 @@ def generate():
 
 
 def A():
-	obj = spr.Skilled_PR22()
+	obj = spr.Skilled_PR2()
 	obj.arm_forward()
 
