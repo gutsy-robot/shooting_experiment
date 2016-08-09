@@ -1,7 +1,19 @@
 from SIMKit import RobotScript, Event
 import PyPR2
+import sys
+numpy_path      = '/usr/lib/python2.7/dist-packages/'
+sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
+pyinterval_path = '/usr/local/lib/python2.7/dist-packages/pyinterval-1.0b21-py2.7-linux-x86_64.egg/'
+mtpltlib_path   = '/usr/lib/pymodules/python2.7'
 
 
+sys.path.append(sympy_path)
+sys.path.append(numpy_path)
+sys.path.append(pyinterval_path)
+sys.path.append(mtpltlib_path)
+sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
+
+from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 
 def generate():
 	
@@ -17,4 +29,8 @@ def generate():
 	asset_head_id = rs.addAssetToChannel(channel_head_id, [2], (2.0,0.0))
 	rs.play()
 
+
+def A():
+	obj = spr.Skilled_PR22()
+	obj.arm_forward()
 
