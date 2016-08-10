@@ -24,7 +24,7 @@ def generate():
 	channel_speech_id = rs.addChannel("say")
 	channel_hands_id = rs.addChannel("moveArmWithJointPos")
 	
-	asset_torso_id = rs.addAssetToChannel(channel_torso_id, [0], (0.2,10))
+	#asset_torso_id = rs.addAssetToChannel(channel_torso_id, [0], (0.2,10))
 	
 	asset_speech_id = rs.addAssetToChannel(channel_speech_id, [2], ("Initial lising",))
 	asset_hands_id = rs.addAssetToChannel(channel_hands_id, [2], {'r_elbow_flex_joint': 0.0, 'r_shoulder_lift_joint': 0.0, 'r_upper_arm_roll_joint': 0.0, 'r_wrist_roll_joint': 0.0, 'r_shoulder_pan_joint': 0.0, 'r_forearm_roll_joint': 0.0, 'r_wrist_flex_joint': 0.0})
