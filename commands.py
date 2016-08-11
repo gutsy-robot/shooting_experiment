@@ -51,7 +51,7 @@ def A():
 	
 
 	PyPR2.moveTorsoBy(0.2,10)
-	PyPR2.say('Initial lising")
+	PyPR2.say("Initial lising")
 	PyPR2.moveHeadTo(0.0,-0.5)
 	time.sleep(2)
 	PyPR2.moveHeadTo(2.0,0.0)
