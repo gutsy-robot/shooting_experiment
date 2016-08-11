@@ -53,8 +53,7 @@ def A():
 	PyPR2.moveTorsoBy(0.2,10)
 	PyPR2.say("Initial lising")
 	PyPR2.moveHeadTo(0.0,-0.5)
-	time.sleep(2)
-	PyPR2.moveHeadTo(2.0,0.0)
+	
 	
 	time.sleep(2)
 	PyPR2.moveArmWithJointPos(**left_home)
@@ -64,3 +63,4 @@ def A():
 	PyPR2.moveArmWithJointPos(**left_shooting)
 	PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.say("License to Kill")
+	PyPR2.moveHeadTo(0.0,0.0)
