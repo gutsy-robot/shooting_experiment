@@ -1,5 +1,6 @@
 from SIMKit import RobotScript, Event
 import PyPR2
+import time
 import sys
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -49,5 +50,6 @@ def A():
 	right_home={'r_elbow_flex_joint': 0.0, 'r_shoulder_lift_joint': 0.0, 'r_upper_arm_roll_joint': 0.0, 'r_wrist_roll_joint': 0.0, 'r_shoulder_pan_joint': 0.0, 'r_forearm_roll_joint': 0.0, 'r_wrist_flex_joint': 0.0} 
 	PyPR2.moveArmWithJointPos(**left_home)
 	PyPR2.moveArmWithJointPos(**right_home)
+	time.sleep(10)
 	PyPR2.moveArmWithJointPos(**left)
 	PyPR2.moveArmWithJointPos(**right)
