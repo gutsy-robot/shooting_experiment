@@ -39,7 +39,7 @@ def generate():
 
 	
 
-def A:
+def A():
 
 	right = {'r_elbow_flex_joint': -0.6838700474140432, 'r_shoulder_lift_joint': -0.2795862208602225, 'r_upper_arm_roll_joint': -0.7924339995905723, 'r_wrist_roll_joint': -0.2403805679846016, 'r_shoulder_pan_joint': -2.37771742738202e-05, 'r_forearm_roll_joint': 5.099914879735316, 'r_wrist_flex_joint': -1.7826226439620259}
 	rs = RobotScript()
