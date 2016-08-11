@@ -17,8 +17,7 @@ from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 
 def generate():
 	
-	right = {'r_elbow_flex_joint': -0.6838700474140432, 'r_shoulder_lift_joint': -0.2795862208602225, 'r_upper_arm_roll_joint': -0.7924339995905723, 'r_wrist_roll_joint': -0.2403805679846016, 'r_shoulder_pan_joint': -2.37771742738202e-05, 'r_forearm_roll_joint': 5.099914879735316, 'r_wrist_flex_joint': -1.7826226439620259}
-	left = {'l_wrist_roll_joint': 3.0377253864391696, 'l_forearm_roll_joint': 3.0636974190755852, 'l_elbow_flex_joint': -2.045293817264738, 'l_shoulder_lift_joint': 0.7999295928757233, 'l_upper_arm_roll_joint': 0.11734018057335116, 'l_wrist_flex_joint': -0.6073161853116821, 'l_shoulder_pan_joint': -0.024019141859252136}
+	
 	rs = RobotScript()
 	channel_head_id = rs.addChannel("moveHeadTo")
 	channel_torso_id = rs.addChannel("moveTorsoBy")
@@ -38,7 +37,17 @@ def generate():
 	rs.play()
 
 
+	
+
+
+def A():
+	
+	right = {'r_elbow_flex_joint': -0.6838700474140432, 'r_shoulder_lift_joint': -0.2795862208602225, 'r_upper_arm_roll_joint': -0.7924339995905723, 'r_wrist_roll_joint': -0.2403805679846016, 'r_shoulder_pan_joint': -2.37771742738202e-05, 'r_forearm_roll_joint': 5.099914879735316, 'r_wrist_flex_joint': -1.7826226439620259}
+	left = {'l_wrist_roll_joint': 3.0377253864391696, 'l_forearm_roll_joint': 3.0636974190755852, 'l_elbow_flex_joint': -2.045293817264738, 'l_shoulder_lift_joint': 0.7999295928757233, 'l_upper_arm_roll_joint': 0.11734018057335116, 'l_wrist_flex_joint': -0.6073161853116821, 'l_shoulder_pan_joint': -0.024019141859252136}
+	left_home = {'l_wrist_roll_joint': -0.0007893761161641422, 'l_forearm_roll_joint': -5.784708695053728e-05, 'l_elbow_flex_joint': -0.1483631860063741, 'l_shoulder_lift_joint': 0.0356638539879416, 'l_upper_arm_roll_joint': 0.15967385473500117, 'l_wrist_flex_joint': -0.07863929718151064, 'l_shoulder_pan_joint': 0.0035887617206241673}
+	
+	right_home={'r_elbow_flex_joint': 0.0, 'r_shoulder_lift_joint': 0.0, 'r_upper_arm_roll_joint': 0.0, 'r_wrist_roll_joint': 0.0, 'r_shoulder_pan_joint': 0.0, 'r_forearm_roll_joint': 0.0, 'r_wrist_flex_joint': 0.0} 
+	PyPR2.moveArmWithJointPos(**left_home)
+	PyPR2.moveArmWithJointPos(**right_home)
 	PyPR2.moveArmWithJointPos(**left)
 	PyPR2.moveArmWithJointPos(**right)
-
-
