@@ -45,6 +45,8 @@ def A():
 	right_try = {'r_elbow_flex_joint': -1.09376531044693672, 'r_shoulder_lift_joint': -0.07055216586911511, 'r_upper_arm_roll_joint': -0.7924339995905723, 'r_wrist_roll_joint': -0.0620154462766567, 'r_shoulder_pan_joint': -2.37771742738202e-05, 'r_forearm_roll_joint': 5.099914879735316, 'r_wrist_flex_joint': -1.82623074381174}
 	rs = RobotScript()
 	channel_hands_id = rs.addChannel("moveArmWithJointTrajectory")
+	channel_speech_id = rs.addChannel("say")
 	asset_id = rs.addAssetToChannel(channel_hands_id, [3], ([right,right_try]))
+	asset_helloworld_id = rs.addAssetToChannel(channel_speech_id, [6], ("Hello world!",))
 	rs.play()
 
