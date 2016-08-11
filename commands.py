@@ -46,4 +46,5 @@ def A():
 	rs = RobotScript()
 	channel_hands_id = rs.addChannel("moveArmWithJointTrajectory")
 	asset_id = rs.addAssetToChannel(channel_hands_id, [3], ([right,right_try]))
+	rs.play()
 
