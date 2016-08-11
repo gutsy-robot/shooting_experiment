@@ -48,7 +48,7 @@ def generate():
 
 
 def A():
-	
+	time.sleep(10)
 
 	PyPR2.moveTorsoBy(0.2,10)
 	PyPR2.say("Initial lising")
