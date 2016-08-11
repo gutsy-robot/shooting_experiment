@@ -38,7 +38,7 @@ def generate():
 	rs.play()
 
 
-	PyPR2.moveArmWihJointPos(**left)
+	PyPR2.moveArmWithJointPos(**left)
 	PyPR2.moveArmWithJointPos(**right)
 
 
