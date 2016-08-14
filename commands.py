@@ -62,11 +62,15 @@ def run():
 
 
 def arm_back():
-	obj = spr.Skilled_PR2()
-	obj.larm_reference = False
+	obj1 = spr.Skilled_PR2()
+	obj1.larm_reference = False
+
+	obj2 = spr.Skilled_PR2()
+	obj2.larm_reference = True
 	
 	time.sleep(10)
-	obj.arm_back()
+	obj1.arm_back(dx=0.05)
+	obj2.arm_forward(dx=0.03)
 
 	
 
