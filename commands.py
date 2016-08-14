@@ -69,8 +69,8 @@ def arm_back():
 	obj2.larm_reference = True
 	
 	time.sleep(10)
-	obj1.arm_back(dx=0.05)
-	obj2.arm_forward(dx=0.03)
+	obj1.arm_back()
+	#obj2.arm_forward(dx=0.03)
 
 	
 
