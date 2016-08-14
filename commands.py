@@ -70,6 +70,7 @@ def arm_back():
 	
 	time.sleep(10)
 	obj1.arm_back()
+	PyPR2.closeGripper(2)
 	#obj2.arm_forward(dx=0.03)
 
 	
