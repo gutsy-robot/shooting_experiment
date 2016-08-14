@@ -1,7 +1,7 @@
 from SIMKit import RobotScript, Event
 import PyPR2
 import time
-import positions
+#import positions
 import sys
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -52,12 +52,11 @@ def run():
 	
 	
 	time.sleep(2)
-	PyPR2.moveArmWithJointPos(**left_home)
-	PyPR2.moveArmWithJointPos(**right_home)
+	##PyPR2.moveArmWithJointPos(**right_home)
 	
 	time.sleep(10)
-	PyPR2.moveArmWithJointPos(**left_shooting)
-	PyPR2.moveArmWithJointPos(**right_shooting)
+	#PyPR2.moveArmWithJointPos(**left_shooting)
+	#PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.say("License to Kill")
 	PyPR2.moveHeadTo(0.0,0.0)
 
