@@ -62,7 +62,7 @@ def run():
 	PyPR2.moveHeadTo(0.0,0.0)
 
 
-def try():
+def arm_back():
 	obj = spr.Skilled_PR2()
 	obj.larm_reference = False
 	
