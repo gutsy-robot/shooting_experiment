@@ -84,5 +84,5 @@ def head_hand_follower(hand_joint_list):
 		x = PyPR2.getArmPose(False)
 		(a,b,c) = x['position']
 		PyPR2.pointHeadTo("base_footprint",a,b,c)
-		time.sleep(2)
+		time.sleep(5)
 
