@@ -78,7 +78,7 @@ def head_hand_follower(hand_joint_list):
 	
 	
 
-	n = hand_joint_list.len()
+	n = len(hand_joint_list.)
 	for i in range(0,n):
 		PyPR2.moveArmWithJointPos(**hand_joint_list[i])
 		(a,b,c) = PyPR2.getArmPose['position']
