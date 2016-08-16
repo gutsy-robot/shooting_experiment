@@ -94,6 +94,6 @@ def revolve():
 	for i in range(0,x):
 		y = PyPR2.getRobotPose()
 		(a,b,c) = y['position']
-		PyPR2.moveBodyTo(a,b,0.2,10)
+		PyPR2.moveBodyTo(a,b,1.0,10)
 		
 
