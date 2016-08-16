@@ -3,6 +3,7 @@ import PyPR2
 import time
 #import positions
 import sys
+import random
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
 pyinterval_path = '/usr/local/lib/python2.7/dist-packages/pyinterval-1.0b21-py2.7-linux-x86_64.egg/'
@@ -84,5 +85,15 @@ def head_hand_follower(hand_joint_list):
 		x = PyPR2.getArmPose(False)
 		(a,b,c) = x['position']
 		PyPR2.pointHeadTo("base_footprint",a,b,c)
+		time.sleep(5)
+
+
+def revolve():
+	x = random.randint(10,15)
+	i = 0
+	for i in range(0,x):
+		y = PyPR2.getRobotPose()
+		(a,b,c) = y['position']
+		PyPR2.moveBodyTo(a,b,0.2,5)
 		time.sleep(5)
 
