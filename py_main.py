@@ -18,4 +18,7 @@ def main():
 	global iksResolver
   	iksResolver = iksresolver.IKSResolver()
 
-	
+	time.sleep(10)
+	PyPR2.openGripper(1)
+	time.sleep(10)
+	PyPR2.closeGripper(1)
