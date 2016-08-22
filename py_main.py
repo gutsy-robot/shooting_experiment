@@ -23,7 +23,7 @@ def main():
   	iksResolver = iksresolver.IKSResolver()
 
 	
-  def onHumanDetected( self, objtype, trackid, nameid, status ):
+def onHumanDetected( self, objtype, trackid, nameid, status ):
     if status == NEW_OBJ or status == REC_OBJ:
       if nameid == 0:
         nameid = 3
@@ -36,7 +36,7 @@ def main():
         if nameid in self.seen_people:
         	self.seen_people[nameid].last_seen = time.time()
 
-  def onHumanTracking( self, tracking_objs ):
+def onHumanTracking( self, tracking_objs ):
     focus_obj = None
     for obj in tracking_objs:
       if obj['est_pos'][0] < 4 and obj['est_pos'][0] >= 0:
