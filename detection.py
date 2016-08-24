@@ -1,9 +1,15 @@
+
+import PyPR2
+
 class Detection:
 	
   LOST_OBJ = 0
 
   NEW_OBJ  = 1
   REC_OBJ  = 2
+  
+  def __init__(self):
+    PyPR2.registerHumanDetectTracking(self.onHumanDetected, self.onHumanTracking)
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
     if status == NEW_OBJ or status == REC_OBJ:
@@ -37,3 +43,7 @@ class Detection:
       if math.fabs(ofs_y) > 10:
         chy = ofs_y * 90.0 / 640 * 0.01745329252
       PyPR2.updateHeadPos( chx, chy )
+  def stopTracking(self):
+	PyPR2.registerHumanDetectTracking(None,None)
+
+
