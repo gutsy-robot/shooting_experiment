@@ -1,8 +1,9 @@
 class Detection:
 	
-LOST_OBJ = 0
-NEW_OBJ  = 1
-REC_OBJ  = 2
+ LOST_OBJ = 0
+
+ NEW_OBJ  = 1
+ REC_OBJ  = 2
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
     if status == NEW_OBJ or status == REC_OBJ:
