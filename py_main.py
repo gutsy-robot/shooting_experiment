@@ -10,11 +10,7 @@ import detection
 
 iksResolver = None
 
-LOST_OBJ = 0
-NEW_OBJ  = 1
-REC_OBJ  = 2
 
- 
 
 
 def main():
