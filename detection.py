@@ -1,17 +1,19 @@
 
 import PyPR2
-
-class Detection:
+import math
+class Detection(object):
 	
   LOST_OBJ = 0
 
   NEW_OBJ  = 1
   REC_OBJ  = 2
   
-  
+  def __init__(self):	
+    PyPR2.registerHumanDetectTracking(self.onHumanDetected, self.onHumanTracking)
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
-    if status == NEW_OBJ or status == REC_OBJ:
+	PyPR2.say("Hi")
+    '''if status == NEW_OBJ or status == REC_OBJ:
       if nameid == 0:
         nameid = 3
       if nameid not in self.seen_people:
@@ -22,7 +24,7 @@ class Detection:
     elif status == LOST_OBJ:
       if nameid in self.seen_people:
         self.seen_people[nameid].last_seen = time.time()
-
+'''
   def onHumanTracking(self,tracking_objs ):
     focus_obj = None
     for obj in tracking_objs:
