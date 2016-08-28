@@ -13,7 +13,7 @@ class Detection(object):
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
        PyPR2.say("Hi")
-    '
+    
   def onHumanTracking(self,tracking_objs ):
     focus_obj = None
     for obj in tracking_objs:
