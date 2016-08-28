@@ -13,18 +13,7 @@ class Detection(object):
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
        PyPR2.say("Hi")
-    '''if status == NEW_OBJ or status == REC_OBJ:
-      if nameid == 0:
-        nameid = 3
-      if nameid not in self.seen_people:
-        self.seen_people[nameid] = KnownPerson( nameid )
-        PyPR2.say( 'Hello {}'.format(self.seen_people[nameid].label) )
-      elif self.seen_people[nameid].last_seen - time.time() > 15*60:
-        PyPR2.say( 'Hello {}'.format(self.seen_people[nameid].label) )
-    elif status == LOST_OBJ:
-      if nameid in self.seen_people:
-        self.seen_people[nameid].last_seen = time.time()
-'''
+    '
   def onHumanTracking(self,tracking_objs ):
     focus_obj = None
     for obj in tracking_objs:
