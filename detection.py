@@ -12,7 +12,7 @@ class Detection(object):
     PyPR2.registerHumanDetectTracking(self.onHumanDetected, self.onHumanTracking)
 
   def onHumanDetected( self, objtype, trackid, nameid, status ):
-	PyPR2.say("Hi")
+       PyPR2.say("Hi")
     '''if status == NEW_OBJ or status == REC_OBJ:
       if nameid == 0:
         nameid = 3
