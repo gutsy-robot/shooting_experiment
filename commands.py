@@ -19,6 +19,14 @@ sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
 from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 
 
+right_shooting = {'r_elbow_flex_joint': -1.5668266161421789, 'r_shoulder_lift_joint': -0.07156730494636866, 'r_upper_arm_roll_joint': -1.1195578453851402, 'r_wrist_roll_joint': -3.1823834614790147, 'r_shoulder_pan_joint': -0.3396092818684876, 'r_forearm_roll_joint': -1.5066273796273486, 'r_wrist_flex_joint': -1.5071675013893124}
+
+right_pullback = {'r_elbow_flex_joint': -1.8827163083810365, 'r_shoulder_lift_joint': -0.1377205348140522, 'r_upper_arm_roll_joint': -1.1378382955913073, 'r_wrist_roll_joint': -2.8935712498579074, 'r_shoulder_pan_joint': -0.395405435349739, 'r_forearm_roll_joint': -1.3948668076388655, 'r_wrist_flex_joint': -1.6445253315659132,'time_to_reach' : 0.2}
+
+left_shooting = {'l_wrist_roll_joint': -2.6133570702164812, 'l_forearm_roll_joint': -1.205012668267126, 'l_elbow_flex_joint': -0.4263229518627475, 'l_shoulder_lift_joint': 0.21368677576185252, 'l_upper_arm_roll_joint': 0.7678997111559798, 'l_wrist_flex_joint': -0.09263466648021362, 'l_shoulder_pan_joint': -0.17482627883160928}
+
+right_pullback_alt = {'r_elbow_flex_joint': -2.119271650781721, 'r_shoulder_lift_joint': -0.15269383620354068, 'r_upper_arm_roll_joint': -0.9991313707813558, 'r_wrist_roll_joint': -2.479583875110267, 'r_shoulder_pan_joint': -0.33853149584284675, 'r_forearm_roll_joint': -1.2974523132141216, 'r_wrist_flex_joint': -1.6922546169151684, 'time_to_reach' : 0.5}
+
 def generate():
 	
 	
@@ -95,5 +103,15 @@ def revolve():
 		y = PyPR2.getRobotPose()
 		(a,b,c) = y['position']
 		PyPR2.moveBodyTo(a,b,1.0,10)
+
+def bow_arrow():
+	PyPR2.moveArmWithJointPos(**right_shooting)
+	PyPR2.moveArmWithJointPos(**left_shooting)
+	time.sleep(7)
+	PyPR2.closeGripper(2)
+	time.sleep(5)
+	PyPR2.moveArmWithJointPos(**right_pullback_alt)
+	time.sleep(5)
+	PyPR2.openGripper(2)
 		
 
