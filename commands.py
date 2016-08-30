@@ -123,7 +123,7 @@ def bow_arrow():
 
 def onHumanDetected(objtype, trackid, nameid, status):	
 	PyPR2.say("hi")
-	PyPR2.moveTorsoBy(0.1,10)
+	
 	
 
 def onHumanTracking(tracking_objs):		
@@ -141,7 +141,7 @@ def onHumanTracking(tracking_objs):
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
 		
-		bow_arrow()
+		
 
 
 
