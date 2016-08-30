@@ -140,5 +140,8 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
+		
+		bow_arrow()
+
 
 
