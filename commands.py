@@ -27,6 +27,11 @@ left_shooting = {'l_wrist_roll_joint': -2.6133570702164812, 'l_forearm_roll_join
 
 right_pullback_alt = {'r_elbow_flex_joint': -2.119271650781721, 'r_shoulder_lift_joint': -0.15269383620354068, 'r_upper_arm_roll_joint': -0.9991313707813558, 'r_wrist_roll_joint': -2.479583875110267, 'r_shoulder_pan_joint': -0.33853149584284675, 'r_forearm_roll_joint': -1.2974523132141216, 'r_wrist_flex_joint': -1.6922546169151684, 'time_to_reach' : 0.5}
 
+best_pullback = {'r_elbow_flex_joint': -2.119561192204488, 'r_shoulder_lift_joint': -0.25683018654512435, 'r_upper_arm_roll_joint': -0.9635325993272411, 'r_wrist_roll_joint': -2.242225981766941, 'r_shoulder_pan_joint': -0.30528594228269534, 'r_forearm_roll_joint': -1.1978974765722068, 'r_wrist_flex_joint': -1.605912838397527, 'time_to_reach' : 0.3}
+
+right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': -0.35157650042211364, 'r_upper_arm_roll_joint': -0.7414411648049486, 'r_wrist_roll_joint': -2.2757713591637283, 'r_shoulder_pan_joint': -0.2699677232886195, 'r_forearm_roll_joint': -1.0189764366341232, 'r_wrist_flex_joint': -1.7970475243950452,'time_to_reach' : 0.2}
+
+
 def generate():
 	
 	
@@ -107,11 +112,12 @@ def revolve():
 def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.moveArmWithJointPos(**left_shooting)
-	time.sleep(7)
+	time.sleep(10)
 	PyPR2.closeGripper(2)
-	time.sleep(5)
-	PyPR2.moveArmWithJointPos(**right_pullback_alt)
-	time.sleep(5)
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**best_pullback)
+	time.sleep(1)
 	PyPR2.openGripper(2)
+	PyPR2.moveArmWithJointPos(**right_up)
 		
 
