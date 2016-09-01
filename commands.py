@@ -99,7 +99,7 @@ def onHumanTracking(tracking_objs):
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
 		PyPR2.moveArmWithJointPos(**right_shooting)
 		
-	else focus_obj:
+	else:
       		mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       		mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
       		#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
