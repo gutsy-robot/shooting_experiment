@@ -110,10 +110,10 @@ def onHumanTracking(tracking_objs):
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
 			if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
-				PyPR2.say("station ary")
+				PyPR2.tuckBothArms()
 			else:	
 
-				PyPR2.moveTorsoBy(0.03,6)
+				PyPR2.moveTorsoBy(0.1,6)
 				initial_x = chx
 				initial_y =chy
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
@@ -130,11 +130,11 @@ def onHumanTracking(tracking_objs):
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
 		        if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
-				PyPR2.say("station ary")
+				PyPR2.tuckBothArms()
 			else:	
-				PyPR2.moveTorsoBy(0.03,6)
+				PyPR2.moveTorsoBy(0.1,6)
 				initial_x = chx
-				initial_y =chy
+				initial_y = chy
 		
 	else:
 		
@@ -150,10 +150,10 @@ def onHumanTracking(tracking_objs):
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
 			if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
-				PyPR2.say("station ary")
+				PyPR2.tuckBothArms()
 			else:	
 
-				PyPR2.moveTorsoBy(0.03,6)			
+				PyPR2.moveTorsoBy(0.1,6)			
 				initial_x = chx
 				initial_y =chy
 
