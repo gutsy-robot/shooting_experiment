@@ -88,7 +88,7 @@ def bow_arrow():
 
 def onHumanDetected(objtype, trackid, nameid, status):	
 	PyPR2.say("hi")
-	bow_arrow()
+	
 	
 	
 
