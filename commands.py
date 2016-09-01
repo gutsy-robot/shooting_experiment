@@ -109,7 +109,7 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
-		if chx==initial_x and chy ==initial_y:
+		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
 			initial_x = chx
@@ -127,7 +127,7 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
-		if chx==initial_x and chy ==initial_y:
+		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
 			initial_x = chx
@@ -145,7 +145,7 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
-		if chx==initial_x and chy ==initial_y:
+		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
 			initial_x = chx
