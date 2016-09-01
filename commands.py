@@ -112,6 +112,8 @@ def onHumanTracking(tracking_objs):
 		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
+
+			PyPR2.moveTorsoBy(0.03,6)
 			initial_x = chx
 			initial_y =chy
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
@@ -130,6 +132,7 @@ def onHumanTracking(tracking_objs):
 		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
+			PyPR2.moveTorsoBy(0.03,6)
 			initial_x = chx
 			initial_y =chy
 		
@@ -149,6 +152,8 @@ def onHumanTracking(tracking_objs):
 		if abs(chx-initial_x) <= 1 and abs(chy -initial_y)<=1:
 			PyPR2.say("station ary")
 		else:	
+
+			PyPR2.moveTorsoBy(0.03,6)			
 			initial_x = chx
 			initial_y =chy
 
