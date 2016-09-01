@@ -1,4 +1,4 @@
-from magiks.specific_geometries.pr2 import skilled_pr2 as spr
+#from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 from SIMKit import RobotScript, Event
 import PyPR2
 import time
