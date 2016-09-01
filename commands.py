@@ -38,6 +38,8 @@ right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': 
 
 
 
+initial_x = 0
+initial_y = 0	
 
 
 def arm_back():
@@ -111,7 +113,11 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       		PyPR2.updateHeadPos( chx, chy )
-
+		if chx==initial_x and chy ==initial_y:
+			PyPR2.say("station ary")
+		else:	
+			initial_x = chx
+			initial_y =chy
 
 
 
