@@ -6,6 +6,7 @@ import time
 import sys
 import random
 import math
+import logging
 
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
@@ -109,11 +110,8 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
-			if abs(chx-initial_x) <= 0.11 and abs(chy -initial_y)<=0.11:
-				PyPR2.tuckBothArms()
-			else:	
-
-				PyPR2.moveTorsoBy(0.1,6)
+			logging.warning(focus_obj['est_pos'][0])
+			
 
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
 		PyPR2.moveArmWithJointPos(**right_shooting)
@@ -128,10 +126,7 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
-		        if abs(chx-initial_x) <= 0.11 and abs(chy -initial_y)<=0.11:
-				PyPR2.tuckBothArms()
-			else:	
-				PyPR2.moveTorsoBy(0.1,6)
+		        logging.warning(focus_obj['est_pos'][0])
 				
 		
 	else:
@@ -147,13 +142,7 @@ def onHumanTracking(tracking_objs):
       		if math.fabs(ofs_y) > 10:
         		chy = ofs_y * 90.0 / 640 * 0.01745329252
       			PyPR2.updateHeadPos( chx, chy )
-			if abs(chx-initial_x) <= 0.11 and abs(chy -initial_y)<=0.11:
-				PyPR2.tuckBothArms()
-			else:	
-
-				PyPR2.moveTorsoBy(0.1,6)			
-
-
+			logging.warning(focus_obj['est_pos'][0])
 
 	   
 
