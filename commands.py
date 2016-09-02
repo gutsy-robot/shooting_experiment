@@ -96,7 +96,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 
 def onHumanTracking(tracking_objs):		
 	focus_obj = tracking_objs[0]
-	if abs(previous_pos - obj['est_pos'][0])<= 0.1:	
+	if abs(previous_pos - focus_obj['est_pos'][0])<= 0.1:	
 		PyPR2.moveTorsoBy(0.1,10)
 	else:
 		if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
