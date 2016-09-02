@@ -97,9 +97,10 @@ def onHumanDetected(objtype, trackid, nameid, status):
 def onHumanTracking(tracking_objs):		
 	focus_obj = tracking_objs[0]
 	PyPR2.setTiltLaserPeriodic(1.0,10)
-	if abs(previous_pos - focus_obj['est_pos'][0])<= 0.1:	
+	if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 		PyPR2.moveTorsoBy(0.1,10)
-	if not abs(previous_pos - focus_obj['est_pos'][0])<= 0.1:	
+	if not abs(previous_pos - focus_obj['est_pos'][0])< 0.1:
+		PyPR2.moveTorsoBy(0.1,10)	
 		if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
@@ -113,7 +114,7 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
-				previous_pos = obj['est_pos'][0]
+				previous_pos = focus_obj['est_pos'][0]
 			
 
 		elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
@@ -129,7 +130,7 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
-				previous_pos = obj['est_pos'][0]		        			
+				previous_pos = focus_obj['est_pos'][0]		        			
 		
 		else:
 		
@@ -144,7 +145,7 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
-				previous_pos = obj['est_pos'][0]				
+				previous_pos = focus_obj['est_pos'][0]				
 
 	   
 
