@@ -96,7 +96,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 
 def onHumanTracking(tracking_objs):		
 	focus_obj = tracking_objs[0]
-	PyPR2.setLaserPeriodic(1.0,10)
+	PyPR2.setTiltLaserPeriodic(1.0,10)
 	if abs(previous_pos - focus_obj['est_pos'][0])<= 0.1:	
 		PyPR2.moveTorsoBy(0.1,10)
 	if not abs(previous_pos - focus_obj['est_pos'][0])<= 0.1:	
