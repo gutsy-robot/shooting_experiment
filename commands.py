@@ -118,9 +118,9 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**left_shooting)
-			if CONDITION_TAG != 1:
-				movement_tracker.append(focus_obj['est_pos'])
-				CONDITION_TAG = 1
+			if commands.CONDITION_TAG != 1:
+				commands.movement_tracker.append(focus_obj['est_pos'])
+				commands.CONDITION_TAG = 1
 
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
 			
@@ -138,9 +138,9 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 			PyPR2.moveArmWithJointPos(**right_shooting)
 				#previous_pos = focus_obj['est_pos'][0]		
-			if CONDITION_TAG != 2:
+			if commands.CONDITION_TAG != 2:
 				movement_tracker.append(focus_obj['est_pos'])
-				CONDITION_TAG = 2        			
+				commands.CONDITION_TAG = 2        			
 		
 	elif focus_obj['est_pos'][0] <2:
 			
@@ -157,9 +157,9 @@ def onHumanTracking(tracking_objs):
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
 			PyPR2.moveArmWithJointPos(**right_pullback_alt)	
-			if CONDITION_TAG != 3:
-				movement_tracker.append(focus_obj['est_pos'])
-				CONDITION_TAG = 3
+			if commands.CONDITION_TAG != 3:
+				commands.movement_tracker.append(focus_obj['est_pos'])
+				commands.CONDITION_TAG = 3
 				#previous_pos = focus_obj['est_pos'][0]	
 	else:
 			
