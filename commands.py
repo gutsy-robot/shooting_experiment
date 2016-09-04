@@ -40,8 +40,8 @@ right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': 
 
 
 #previous_pos = 0
-global CONDITION_TAG=0
-global movement_tracker = []
+global CONDITION_TAG
+global movement_tracker 
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
@@ -92,6 +92,7 @@ def bow_arrow():
 def onHumanDetected(objtype, trackid, nameid, status):	
 	PyPR2.say("hi")
 	movement_tracker.append("Hi")
+	CONDITION_TAG = 0
 	
 	
 
