@@ -91,7 +91,7 @@ def bow_arrow():
 
 def onHumanDetected(objtype, trackid, nameid, status):	
 	PyPR2.say("hi")
-	change()
+	movement_tracker.append("Hi")
 	
 	
 
@@ -181,7 +181,5 @@ def onHumanTracking(tracking_objs):
 	   
 
 	
-def change():
-	commands.movement_tracker.append("HI")		
 
 
