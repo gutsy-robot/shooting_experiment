@@ -40,7 +40,8 @@ right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': 
 
 
 #previous_pos = 0
-
+CONDITION_TAG=0
+movement_tracker = []
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
@@ -101,6 +102,11 @@ def onHumanTracking(tracking_objs):
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	
 	if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
+			if CONDITION_TAG =0:
+				CONDITION_TAG = 1
+			elif CONDITION_TAG != 1:
+				movement_tracker.append(focus_obj['est_pos'])
+				CONDITION_TAG = 1
 			
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
@@ -117,6 +123,11 @@ def onHumanTracking(tracking_objs):
 			PyPR2.moveArmWithJointPos(**left_shooting)
 
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
+			if CONDITION_TAG =0:
+				CONDITION_TAG = 2
+			elif CONDITION_TAG != 2:
+				movement_tracker.append(focus_obj['est_pos'])
+				CONDITION_TAG = 2
 			
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
@@ -133,6 +144,11 @@ def onHumanTracking(tracking_objs):
 				#previous_pos = focus_obj['est_pos'][0]		        			
 		
 	elif focus_obj['est_pos'][0] <2:
+			if CONDITION_TAG =0:
+				CONDITION_TAG = 3
+			elif CONDITION_TAG != 3:
+				movement_tracker.append(focus_obj['est_pos'])
+				CONDITION_TAG = 3
 				
       			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
