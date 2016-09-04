@@ -131,8 +131,8 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 				previous_pos = focus_obj['est_pos'][0]		        			
 		
-	else:
-			PyPR2.tuckBothArms()		
+	elif focus_obj['est_pos'][0] <2:
+			PyPR2.moveArmWithJointPos(**right_pullback_alt)		
       			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
       			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
