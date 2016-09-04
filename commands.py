@@ -23,7 +23,7 @@ sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
 
 
 
-counter =1 
+
 s={'l_wrist_roll_joint': -0.0007893761161641422, 'l_forearm_roll_joint': -5.784708695053728e-05, 'l_elbow_flex_joint': -0.1483631860063741, 'l_shoulder_lift_joint': 0.356638539879416, 'l_upper_arm_roll_joint': 0.15967385473500117, 'l_wrist_flex_joint': -0.07863929718151064, 'l_shoulder_pan_joint': 0.0035887617206241673}
 right_shooting = {'r_elbow_flex_joint': -1.5668266161421789, 'r_shoulder_lift_joint': -0.07156730494636866, 'r_upper_arm_roll_joint': -1.1195578453851402, 'r_wrist_roll_joint': -3.1823834614790147, 'r_shoulder_pan_joint': -0.3396092818684876, 'r_forearm_roll_joint': -1.5066273796273486, 'r_wrist_flex_joint': -1.5071675013893124}
 
@@ -91,7 +91,7 @@ def bow_arrow():
 
 def onHumanDetected(objtype, trackid, nameid, status):	
 	PyPR2.say("hi")
-	
+	commands.movement_tracker.append("HI")
 	
 	
 
@@ -118,9 +118,9 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**left_shooting)
-			if commands.CONDITION_TAG != 1:
-				commands.movement_tracker.append(focus_obj['est_pos'])
-				commands.CONDITION_TAG = 1
+			if CONDITION_TAG != 1:
+				movement_tracker.append(focus_obj['est_pos'])
+				CONDITION_TAG = 1
 
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
 			
@@ -138,9 +138,9 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 			PyPR2.moveArmWithJointPos(**right_shooting)
 				#previous_pos = focus_obj['est_pos'][0]		
-			if commands.CONDITION_TAG != 2:
+			if CONDITION_TAG != 2:
 				movement_tracker.append(focus_obj['est_pos'])
-				commands.CONDITION_TAG = 2        			
+				CONDITION_TAG = 2        			
 		
 	elif focus_obj['est_pos'][0] <2:
 			
@@ -157,9 +157,9 @@ def onHumanTracking(tracking_objs):
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
 			PyPR2.moveArmWithJointPos(**right_pullback_alt)	
-			if commands.CONDITION_TAG != 3:
-				commands.movement_tracker.append(focus_obj['est_pos'])
-				commands.CONDITION_TAG = 3
+			if CONDITION_TAG != 3:
+				movement_tracker.append(focus_obj['est_pos'])
+				CONDITION_TAG = 3
 				#previous_pos = focus_obj['est_pos'][0]	
 	else:
 			
