@@ -42,6 +42,7 @@ right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': 
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
+objects = 0
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
@@ -190,7 +191,10 @@ def reset():
 	CONDITION_TAG = 0
 
 def onWaitedMeanHumanTracking(tracking_objs):
+			global objects
+
 			a = len(tracking_objs)
+			objects =a 
 			x=0
 			y=0
 			for i in range(0,a):
