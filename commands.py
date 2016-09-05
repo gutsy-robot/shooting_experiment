@@ -196,6 +196,7 @@ def onWaitedMeanHumanTracking(tracking_objs):
 	a = len(tracking_objs)
 	if a!=0:
 			objects =a 
+			movement_tracker.append(a)
 			x=0
 			y=0
 			for i in range(0,a):
