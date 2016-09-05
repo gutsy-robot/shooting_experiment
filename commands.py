@@ -145,7 +145,7 @@ def onHumanTracking(tracking_objs):
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
 				#previous_pos = focus_obj['est_pos'][0]
-			PyPR2.moveArmWithJointPos(**left_shooting)	
+			PyPR2.moveArmWithJointPos(**right_shooting)	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	elif focus_obj['est_pos'][0] <2:
 			
@@ -165,7 +165,7 @@ def onHumanTracking(tracking_objs):
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
 				#previous_pos = focus_obj['est_pos'][0]
-			PyPR2.moveArmWithJointPos(**left_shooting)	
+			PyPR2.moveArmWithJointPos(**best_pullback)	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	else:
 			
