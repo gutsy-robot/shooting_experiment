@@ -191,9 +191,10 @@ def reset():
 	CONDITION_TAG = 0
 
 def onWaitedMeanHumanTracking(tracking_objs):
-			global objects
-
-			a = len(tracking_objs)
+	global objects
+			
+	a = len(tracking_objs)
+	if a!=0:
 			objects =a 
 			x=0
 			y=0
