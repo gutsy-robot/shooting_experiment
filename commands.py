@@ -189,4 +189,17 @@ def reset():
 	movement_tracker = []
 	CONDITION_TAG = 0
 
+def onWaitedMeanHumanTracking(tracking_objs):
+	
+			mid_x = (tracking_objs[0]['bound'][0]+tracking_objs[1]['bound'][0]) + (tracking_objs[0]['bound'][2]+tracking_objs[1]['bound'][2]) / 2
+      			mid_y = (tracking_objs[0]['bound'][1]+tracking_objs[1]['bound'][1]) + (tracking_objs[0]['bound'][3]+tracking_objs[1]['bound'][3]) / 2
+      			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
+      			ofs_x = mid_x - 320
+      			ofs_y = mid_y - 240
+      			chx = chy = 0.0
+      			if math.fabs(ofs_x) > 10:
+       				chx = -ofs_x * 90.0 / 640 * 0.01745329252
+      			if math.fabs(ofs_y) > 10:
+        			chy = ofs_y * 90.0 / 640 * 0.01745329252
+      				PyPR2.updateHeadPos( chx, chy )
 
