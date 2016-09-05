@@ -190,9 +190,15 @@ def reset():
 	CONDITION_TAG = 0
 
 def onWaitedMeanHumanTracking(tracking_objs):
+			a = len(tracking_objs)
+			x=0
+			y=0
+			for i in range(0,a):
+				x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2]
+				y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3]	
 	
-			mid_x = (tracking_objs[0]['bound'][0]+tracking_objs[1]['bound'][0]) + (tracking_objs[0]['bound'][2]+tracking_objs[1]['bound'][2]) / 2
-      			mid_y = (tracking_objs[0]['bound'][1]+tracking_objs[1]['bound'][1]) + (tracking_objs[0]['bound'][3]+tracking_objs[1]['bound'][3]) / 2
+			mid_x = x/a
+      			mid_y = y/a
       			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
       			ofs_x = mid_x - 320
       			ofs_y = mid_y - 240
