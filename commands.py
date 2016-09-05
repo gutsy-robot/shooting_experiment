@@ -200,8 +200,8 @@ def onWaitedMeanHumanTracking(tracking_objs):
 			x=0
 			y=0
 			for i in range(0,a):
-				x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2]
-				y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3]	
+				x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2]/2
+				y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3]/2	
 	
 			mid_x = x/a
       			mid_y = y/a
