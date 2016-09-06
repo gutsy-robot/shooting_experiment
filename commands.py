@@ -124,6 +124,7 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252	
 				head_yaw_list.append(chx)
+				PyPR2.moveBodyTo(0.0,0.0,chx,4)
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
@@ -146,6 +147,8 @@ def onHumanTracking(tracking_objs):
       			chx = chy = 0.0
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
+				head_yaw_list.append(chx)
+				PyPR2.moveBodyTo(0.0,0.0,chx,4)
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
@@ -166,6 +169,8 @@ def onHumanTracking(tracking_objs):
       			chx = chy = 0.0
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
+				head_yaw_list.append(chx)
+				PyPR2.moveBodyTo(0.0,0.0,chx,4)
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
@@ -182,6 +187,8 @@ def onHumanTracking(tracking_objs):
       			chx = chy = 0.0
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
+				head_yaw_list.append(chx)
+				PyPR2.moveBodyTo(0.0,0.0,chx,4)
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )			
