@@ -43,6 +43,7 @@ right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': 
 CONDITION_TAG = 0 
 movement_tracker = []
 objects = 0
+head_yaw_list = []
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
@@ -100,7 +101,8 @@ def onHumanDetected(objtype, trackid, nameid, status):
 
 def onHumanTracking(tracking_objs):
 	global movement_tracker
-	global CONDITION_TAG		
+	global CONDITION_TAG	
+	global head_yaw_list	
 	focus_obj = tracking_objs[0]
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
@@ -118,8 +120,10 @@ def onHumanTracking(tracking_objs):
       			ofs_x = mid_x - 320
       			ofs_y = mid_y - 240
       			chx = chy = 0.0
+			
       			if math.fabs(ofs_x) > 10:
-       				chx = -ofs_x * 90.0 / 640 * 0.01745329252
+       				chx = -ofs_x * 90.0 / 640 * 0.01745329252	
+				head_yaw_list.append(chx)
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
