@@ -37,6 +37,11 @@ best_pullback = {'r_elbow_flex_joint': -2.119416421493104, 'r_shoulder_lift_join
 
 right_up = {'r_elbow_flex_joint': -2.0722211695820745, 'r_shoulder_lift_joint': -0.35157650042211364, 'r_upper_arm_roll_joint': -0.7414411648049486, 'r_wrist_roll_joint': -2.2757713591637283, 'r_shoulder_pan_joint': -0.2699677232886195, 'r_forearm_roll_joint': -1.0189764366341232, 'r_wrist_flex_joint': -1.7970475243950452,'time_to_reach' : 0.2}
 
+alt_right_shooting ={'r_elbow_flex_joint': -1.595346446284734, 'r_shoulder_lift_joint': -0.009474631387698922, 'r_upper_arm_roll_joint': -1.0682443009467766, 'r_wrist_roll_joint': -3.2004229291203083, 'r_shoulder_pan_joint': -0.3623256950243017, 'r_forearm_roll_joint': -1.5515167191009833, 'r_wrist_flex_joint': -1.5588428805297814}
+
+alt_right_release = {'r_elbow_flex_joint': -1.2864057481922857, 'r_shoulder_lift_joint': -0.15734655697428568, 'r_upper_arm_roll_joint': -0.4683568954970323, 'r_wrist_roll_joint': -3.326642306329232, 'r_shoulder_pan_joint': -0.23547857046811338, 'r_forearm_roll_joint': -1.6584181357856194, 'r_wrist_flex_joint': -2.006767212955106}
+alt_right_intermediate = {'r_elbow_flex_joint': -1.2869848310378198, 'r_shoulder_lift_joint': -0.304203343483619, 'r_upper_arm_roll_joint': -0.8610658652768834, 'r_wrist_roll_joint': -3.3490058912604237, 'r_shoulder_pan_joint': -0.4156346499848435, 'r_forearm_roll_joint': -1.3218059368203074, 'r_wrist_flex_joint': -1.811673215228525}
+
 
 
 #previous_pos = 0
@@ -231,17 +236,16 @@ def onWaitedMeanHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 	
 
-alt_right_shooting ={'r_elbow_flex_joint': -1.595346446284734, 'r_shoulder_lift_joint': -0.009474631387698922, 'r_upper_arm_roll_joint': -1.0682443009467766, 'r_wrist_roll_joint': -3.2004229291203083, 'r_shoulder_pan_joint': -0.3623256950243017, 'r_forearm_roll_joint': -1.5515167191009833, 'r_wrist_flex_joint': -1.5588428805297814}
 
-alt_right_release = {'r_elbow_flex_joint': -1.2864057481922857, 'r_shoulder_lift_joint': -0.15734655697428568, 'r_upper_arm_roll_joint': -0.4683568954970323, 'r_wrist_roll_joint': -3.326642306329232, 'r_shoulder_pan_joint': -0.23547857046811338, 'r_forearm_roll_joint': -1.6584181357856194, 'r_wrist_flex_joint': -2.006767212955106}
-alt_right_intermediate = {'r_elbow_flex_joint': -1.2869848310378198, 'r_shoulder_lift_joint': -0.304203343483619, 'r_upper_arm_roll_joint': -0.8610658652768834, 'r_wrist_roll_joint': -3.3490058912604237, 'r_shoulder_pan_joint': -0.4156346499848435, 'r_forearm_roll_joint': -1.3218059368203074, 'r_wrist_flex_joint': -1.811673215228525}
 def alt_bow_arrow():
 	PyPR2.moveArmWithJointPos(**left_shooting)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_intermediate)
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**alt_right_shooting)
 	time.sleep(5)
 	PyPR2.closeGripper(2)
-	time.sleep(4)
+	time.sleep(2)
 	PyPR2.moveArmWithJointPos(**best_pullback)
 	time.sleep(5)
 	PyPR2.openGripper(2)
