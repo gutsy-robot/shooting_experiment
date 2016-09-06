@@ -124,10 +124,11 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252	
 				head_yaw_list.append(chx)
-				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
+				
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
+				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**left_shooting)	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
@@ -148,10 +149,11 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
 				head_yaw_list.append(chx)
-				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
+				
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
+				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**right_shooting)	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
@@ -170,10 +172,11 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
 				head_yaw_list.append(chx)
-				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
+				
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
+				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**best_pullback)	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
@@ -188,10 +191,11 @@ def onHumanTracking(tracking_objs):
       			if math.fabs(ofs_x) > 10:
        				chx = -ofs_x * 90.0 / 640 * 0.01745329252
 				head_yaw_list.append(chx)
-				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)
+				
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
-      				PyPR2.updateHeadPos( chx, chy )			
+      				PyPR2.updateHeadPos( chx, chy )	
+				PyPR2.moveBodyTo(0.0,0.0,chx/10,2)		
 
 	   
 
