@@ -86,7 +86,7 @@ def bow_arrow():
 	PyPR2.closeGripper(2)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**best_pullback)
-	time.sleep(1)
+	time.sleep(7)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**right_up)
 		
