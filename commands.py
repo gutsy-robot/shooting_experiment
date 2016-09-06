@@ -42,6 +42,14 @@ alt_right_shooting ={'r_elbow_flex_joint': -1.595346446284734, 'r_shoulder_lift_
 alt_right_release = {'r_elbow_flex_joint': -1.2864057481922857, 'r_shoulder_lift_joint': -0.15734655697428568, 'r_upper_arm_roll_joint': -0.4683568954970323, 'r_wrist_roll_joint': -3.326642306329232, 'r_shoulder_pan_joint': -0.23547857046811338, 'r_forearm_roll_joint': -1.6584181357856194, 'r_wrist_flex_joint': -2.006767212955106}
 alt_right_intermediate = {'r_elbow_flex_joint': -1.2869848310378198, 'r_shoulder_lift_joint': -0.304203343483619, 'r_upper_arm_roll_joint': -0.8610658652768834, 'r_wrist_roll_joint': -3.3490058912604237, 'r_shoulder_pan_joint': -0.4156346499848435, 'r_forearm_roll_joint': -1.3218059368203074, 'r_wrist_flex_joint': -1.811673215228525}
 
+left_refill = 	{'l_wrist_roll_joint': -2.6438093589298246, 'l_forearm_roll_joint': -1.648931213525727, 'l_elbow_flex_joint': -0.7096392340403112, 'l_shoulder_lift_joint': 0.13805891450647004, 'l_upper_arm_roll_joint': 1.5667874561307527, 'l_wrist_flex_joint': -0.42401793925654646, 'l_shoulder_pan_joint': -0.11853268564621577}
+
+right_refill = {'r_elbow_flex_joint': -0.6960307871702596, 'r_shoulder_lift_joint': -0.24287202423288937, 'r_upper_arm_roll_joint': -0.26262165326446807, 'r_wrist_roll_joint': -4.162579188202739, 'r_shoulder_pan_joint': -0.6893093938802535, 'r_forearm_roll_joint': -1.7945901784672387, 'r_wrist_flex_joint': -2.0064626505144085}
+
+right_pick = {'r_elbow_flex_joint': -0.6767762825562502, 'r_shoulder_lift_joint': -0.2748489051663732, 'r_upper_arm_roll_joint': -0.12407508328088657, 'r_wrist_roll_joint': -2.4850057559226775, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -2.606474043818355, 'r_wrist_flex_joint': -1.727875035116706}
+right_pick_further = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
+left_pick_further= {'l_wrist_roll_joint': -2.2007145166355553, 'l_forearm_roll_joint': -2.044316052832808, 'l_elbow_flex_joint': -0.9928107455064914, 'l_shoulder_lift_joint': 0.14905625451004917, 'l_upper_arm_roll_joint': 1.5773708746711654, 'l_wrist_flex_joint': -0.4879760518029503, 'l_shoulder_pan_joint': -0.03852779989672461}
+left_intermediate = {'l_wrist_roll_joint': -2.9727803038028577, 'l_forearm_roll_joint': -1.614338655529292, 'l_elbow_flex_joint': -0.3585702589352563, 'l_shoulder_lift_joint': 0.21791652191707533, 'l_upper_arm_roll_joint': 1.5916424542180851, 'l_wrist_flex_joint': -0.39351818626673085, 'l_shoulder_pan_joint': -0.09880091071525321}
 
 
 #previous_pos = 0
@@ -94,8 +102,7 @@ def bow_arrow():
 	time.sleep(10)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**right_up)
-		
-
+	
 def onHumanDetected(objtype, trackid, nameid, status):	
 	
 	PyPR2.say("hi")
@@ -250,6 +257,26 @@ def alt_bow_arrow():
 	time.sleep(5)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
-	
-	
-	
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**left_intermediate)
+	PyPR2.moveArmWithJointPos(**right_refill)
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**left_refill)
+	time.sleep(4)
+	PyPR2.moveArmWithJointPos(**right_pick)
+	time.sleep(2)
+	PyPR2.closeGripper(2)
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**right_pick_further)
+	time.sleep(2)
+	PyPR2.moveArmWithJointPos(**left_pick_further)	
+
+
+a = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
+b= {'l_wrist_roll_joint': -3.062191134607524, 'l_forearm_roll_joint': -0.8025704843520763, 'l_elbow_flex_joint': -1.6901712622409446, 'l_shoulder_lift_joint': 0.30225766025221656, 'l_upper_arm_roll_joint': 1.1533927137491862, 'l_wrist_flex_joint': -0.08264695215512896, 'l_shoulder_pan_joint': 0.42176973966926046}
+
+right_current = {'r_elbow_flex_joint': -1.5455453215688002, 'r_shoulder_lift_joint': 0.12215506896283253, 'r_upper_arm_roll_joint': 0.3162592699308211, 'r_wrist_roll_joint': -2.3653127167286936, 'r_shoulder_pan_joint': -0.2096946124700908, 'r_forearm_roll_joint': -2.8626787919223875, 'r_wrist_flex_joint': -1.8855078526375362}
+
+
+
+left_current = {'l_wrist_roll_joint': -2.89637864010797, 'l_forearm_roll_joint': -1.2024095493543505, 'l_elbow_flex_joint': -1.5409126588045274, 'l_shoulder_lift_joint': 0.0691140521763395, 'l_upper_arm_roll_joint': 1.5897181963016465, 'l_wrist_flex_joint': -0.5562415474392138, 'l_shoulder_pan_joint': 0.5335278598664772}
