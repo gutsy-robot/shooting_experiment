@@ -254,6 +254,7 @@ def onWaitedMeanHumanTracking(tracking_objs):
 
 
 def alt_bow_arrow():
+	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**left_shooting)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_intermediate)
@@ -292,14 +293,16 @@ right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint
 
 def refill():
 	PyPR2.moveArmWithJointPos(**left_intermediate)
-	PyPR2.moveHeadTo(0.2,0.3)
-	PyPR2.moveArmWithJointPos(**right_refill)
-	PyPR2.moveHeadTo(-0.4,0.3)
+	PyPR2.moveHeadTo(0.1,0.3)
 	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**right_refill)
+	PyPR2.moveHeadTo(-0.2,0.3)
+	time.sleep(3)
+	PyPR2.moveHeadTo(0.0,0.3)
 	PyPR2.moveArmWithJointPos(**left_refill)
 	time.sleep(4)
 	PyPR2.moveArmWithJointPos(**right_pick)
-	PyPR2.moveHeadTo(0.0,0.1)
+	PyPR2.moveHeadTo(0.0,0.14)
 	time.sleep(2)
 	PyPR2.closeGripper(2)
 	time.sleep(3)
