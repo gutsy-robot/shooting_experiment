@@ -51,7 +51,7 @@ right_pick_further = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift
 left_pick_further= {'l_wrist_roll_joint': -2.2007145166355553, 'l_forearm_roll_joint': -2.044316052832808, 'l_elbow_flex_joint': -0.9928107455064914, 'l_shoulder_lift_joint': 0.14905625451004917, 'l_upper_arm_roll_joint': 1.5773708746711654, 'l_wrist_flex_joint': -0.4879760518029503, 'l_shoulder_pan_joint': -0.03852779989672461}
 left_intermediate = {'l_wrist_roll_joint': -2.9727803038028577, 'l_forearm_roll_joint': -1.614338655529292, 'l_elbow_flex_joint': -0.3585702589352563, 'l_shoulder_lift_joint': 0.21791652191707533, 'l_upper_arm_roll_joint': 1.5916424542180851, 'l_wrist_flex_joint': -0.39351818626673085, 'l_shoulder_pan_joint': -0.09880091071525321}
 
-
+left_last = {'l_wrist_roll_joint': -0.0006999676759598117, 'l_forearm_roll_joint': -5.784708695053728e-05, 'l_elbow_flex_joint': -1.0000492810756678, 'l_shoulder_lift_joint': 0.5000405904704315, 'l_upper_arm_roll_joint': 0.15967385473500117, 'l_wrist_flex_joint': -0.09311103337463733, 'l_shoulder_pan_joint': 0.0035887617206241673}
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
@@ -257,19 +257,20 @@ def alt_bow_arrow():
 	time.sleep(5)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
-	time.sleep(3)
-	PyPR2.moveArmWithJointPos(**left_intermediate)
-	PyPR2.moveArmWithJointPos(**right_refill)
-	time.sleep(3)
-	PyPR2.moveArmWithJointPos(**left_refill)
-	time.sleep(4)
-	PyPR2.moveArmWithJointPos(**right_pick)
-	time.sleep(2)
-	PyPR2.closeGripper(2)
-	time.sleep(3)
-	PyPR2.moveArmWithJointPos(**right_pick_further)
-	time.sleep(2)
-	PyPR2.moveArmWithJointPos(**left_pick_further)	
+	PyPR2.moveArmWithJointPos(**left_last)
+	#time.sleep(3)
+	#PyPR2.moveArmWithJointPos(**left_intermediate)
+	#PyPR2.moveArmWithJointPos(**right_refill)
+	#time.sleep(3)
+	#PyPR2.moveArmWithJointPos(**left_refill)
+	#time.sleep(4)
+	#PyPR2.moveArmWithJointPos(**right_pick)
+	#time.sleep(2)
+	#PyPR2.closeGripper(2)
+	#time.sleep(3)
+	#PyPR2.moveArmWithJointPos(**right_pick_further)
+	#time.sleep(2)
+	#PyPR2.moveArmWithJointPos(**left_pick_further)	
 
 
 a = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
