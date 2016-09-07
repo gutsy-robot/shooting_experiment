@@ -95,10 +95,12 @@ def revolve():
 def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.moveArmWithJointPos(**left_shooting)
+	PyPR2.moveHeadTo(0.0,0.14)
 	time.sleep(10)
 	PyPR2.closeGripper(2)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**best_pullback)
+	PyPR2.moveHeadto(0.0,0.0)
 	time.sleep(10)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**right_up)
@@ -250,15 +252,19 @@ def alt_bow_arrow():
 	PyPR2.moveArmWithJointPos(**left_shooting)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_intermediate)
+	PyPR2.moveHeadTo(0.0,0.3)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**alt_right_shooting)
 	time.sleep(5)
 	PyPR2.closeGripper(2)
 	time.sleep(2)
 	PyPR2.moveArmWithJointPos(**best_pullback)
+	PyPR2.moveHeadTo(0.0,0.1)
 	time.sleep(5)
 	PyPR2.openGripper(2)
+	PyPR2.moveHeadTo(0.0,-0.1)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
+
 	
 	#time.sleep(3)
 	
@@ -272,23 +278,34 @@ def alt_bow_arrow():
 
 
 #right_current = {'r_elbow_flex_joint': -0.5144883150953158, 'r_shoulder_lift_joint': -0.16377577113022426, 'r_upper_arm_roll_joint': 0.48463183761920137, 'r_wrist_roll_joint': -2.8072093903002204, 'r_shoulder_pan_joint': -0.4293142418487461, 'r_forearm_roll_joint': -3.3093739973546157, 'r_wrist_flex_joint': -1.7845805453665076}
-left_match = {'l_wrist_roll_joint': -2.572036983481897, 'l_forearm_roll_joint': -1.199170112485119, 'l_elbow_flex_joint': -1.3315742101439463, 'l_shoulder_lift_joint': 0.46654100092106743, 'l_upper_arm_roll_joint': 1.1251702643080863, 'l_wrist_flex_joint': -0.07606223037561155, 'l_shoulder_pan_joint': 0.017019633732455852}
+left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': -1.2597938596093066, 'l_elbow_flex_joint': -1.663967763480526, 'l_shoulder_lift_joint': 0.5094306269350259, 'l_upper_arm_roll_joint': 1.2079133547149474, 'l_wrist_flex_joint': -0.07266853460784328, 'l_shoulder_pan_joint': 0.21964340655292902}
 
 
-right_match = {'r_elbow_flex_joint': -0.5386650238963648, 'r_shoulder_lift_joint': -0.1328986241970983, 'r_upper_arm_roll_joint': 0.5045158360890674, 'r_wrist_roll_joint': -2.745252688078398, 'r_shoulder_pan_joint': -0.2677292446199808, 'r_forearm_roll_joint': -3.7570526032650036, 'r_wrist_flex_joint': -2.0057798951528456}
+right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
+
 
 
 def refill():
 	PyPR2.moveArmWithJointPos(**left_intermediate)
+	PyPR2.moveHeadTo(0.4,0.3)
 	PyPR2.moveArmWithJointPos(**right_refill)
+	PyPR2.moveHeadTo(-0.4,0.3)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**left_refill)
 	time.sleep(4)
 	PyPR2.moveArmWithJointPos(**right_pick)
+	PyPR2.moveHeadTo(0.0,0.1)
 	time.sleep(2)
 	PyPR2.closeGripper(2)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**right_pick_further)
 	time.sleep(2)
-	PyPR2.moveArmWithJointPos(**left_pick_further)	
+	PyPR2.moveArmWithJointPos(**left_pick_further)
+
+
+def close():
+	time.sleep(10)
+	PyPR2.openGripper(1)
+	time.sleep(10)
+	PyPR2.closeGripper(1)	
 
