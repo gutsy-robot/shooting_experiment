@@ -106,7 +106,7 @@ def bow_arrow():
 def onHumanDetected(objtype, trackid, nameid, status):	
 	
 	PyPR2.say("Target Detect ed")
-	
+	alt_bow_arrow()
 	
 	
 	
@@ -190,7 +190,8 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
-			alt_bow_arrow()	
+			PyPR2.moveTorsoBy(0.05,2)
+	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	else:
 			
@@ -257,7 +258,7 @@ def alt_bow_arrow():
 	time.sleep(5)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
-	PyPR2.moveArmWithJointPos(**left_last)
+	
 	#time.sleep(3)
 	#PyPR2.moveArmWithJointPos(**left_intermediate)
 	#PyPR2.moveArmWithJointPos(**right_refill)
