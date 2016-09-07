@@ -106,6 +106,7 @@ def bow_arrow():
 def onHumanDetected(objtype, trackid, nameid, status):	
 	
 	PyPR2.say("Target Detect ed")
+	PyPR2.moveTorsoBy(0.1,3)
 	alt_bow_arrow()
 	
 	
