@@ -292,7 +292,7 @@ right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint
 
 def refill():
 	PyPR2.moveArmWithJointPos(**left_intermediate)
-	PyPR2.moveHeadTo(0.4,0.3)
+	PyPR2.moveHeadTo(0.2,0.3)
 	PyPR2.moveArmWithJointPos(**right_refill)
 	PyPR2.moveHeadTo(-0.4,0.3)
 	time.sleep(3)
@@ -306,6 +306,7 @@ def refill():
 	PyPR2.moveArmWithJointPos(**right_pick_further)
 	time.sleep(2)
 	PyPR2.moveArmWithJointPos(**left_pick_further)
+	time.sleep(4)
 	PyPR2.moveArmWithJointPos(**r2)
 	PyPR2.moveArmWithJointPos(**l2)
 
