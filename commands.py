@@ -52,6 +52,11 @@ left_pick_further= {'l_wrist_roll_joint': -2.2007145166355553, 'l_forearm_roll_j
 left_intermediate = {'l_wrist_roll_joint': -2.9727803038028577, 'l_forearm_roll_joint': -1.614338655529292, 'l_elbow_flex_joint': -0.3585702589352563, 'l_shoulder_lift_joint': 0.21791652191707533, 'l_upper_arm_roll_joint': 1.5916424542180851, 'l_wrist_flex_joint': -0.39351818626673085, 'l_shoulder_pan_joint': -0.09880091071525321}
 
 left_last = {'l_wrist_roll_joint': -0.0006999676759598117, 'l_forearm_roll_joint': -5.784708695053728e-05, 'l_elbow_flex_joint': -1.0000492810756678, 'l_shoulder_lift_joint': 0.5000405904704315, 'l_upper_arm_roll_joint': 0.15967385473500117, 'l_wrist_flex_joint': -0.09311103337463733, 'l_shoulder_pan_joint': 0.0035887617206241673}
+
+
+l2 = {'l_wrist_roll_joint': -2.679286471527397, 'l_forearm_roll_joint': -1.0647334824120165, 'l_elbow_flex_joint': -1.6303809584395477, 'l_shoulder_lift_joint': 0.6161894198928477, 'l_upper_arm_roll_joint': 1.2972309930029742, 'l_wrist_flex_joint': -0.07532257873391857, 'l_shoulder_pan_joint': 0.278424198259032}
+
+r2 = {'r_elbow_flex_joint': -0.7588612759107106, 'r_shoulder_lift_joint': -0.018610883082980017, 'r_upper_arm_roll_joint': 0.85072418681373554, 'r_wrist_roll_joint': -9.028506366421123, 'r_shoulder_pan_joint': -0.23149905283497807, 'r_forearm_roll_joint': -3.7593086396560755, 'r_wrist_flex_joint': -2.9993840838982049}
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
@@ -301,6 +306,8 @@ def refill():
 	PyPR2.moveArmWithJointPos(**right_pick_further)
 	time.sleep(2)
 	PyPR2.moveArmWithJointPos(**left_pick_further)
+	PyPR2.moveArmWithJointPos(**r2)
+	PyPR2.moveArmWithJointPos(**l2)
 
 
 def close():
