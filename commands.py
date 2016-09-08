@@ -255,8 +255,11 @@ def onWaitedMeanHumanTracking(tracking_objs):
 
 def alt_bow_arrow():
 	PyPR2.openGripper(2)
+	PyPR2.moveHeadTo(0.0,0.15)
 	PyPR2.moveArmWithJointPos(**left_shooting)
 	PyPR2.openGripper(2)
+	time.sleep(2)
+	PyPR2.moveHeadTo(0.0,0.0)
 	PyPR2.moveArmWithJointPos(**alt_right_intermediate)
 	PyPR2.moveHeadTo(0.0,0.3)
 	time.sleep(3)
@@ -264,11 +267,14 @@ def alt_bow_arrow():
 	time.sleep(5)
 	PyPR2.closeGripper(2)
 	time.sleep(2)
+	PyPR2.moveHeadTo(0.0,0.18)
 	PyPR2.moveArmWithJointPos(**best_pullback)
-	PyPR2.moveHeadTo(0.0,0.1)
+	
+	
 	time.sleep(5)
+	PyPR2.moveHeadTo(0.0,0.1)
 	PyPR2.openGripper(2)
-	PyPR2.moveHeadTo(0.0,-0.1)
+	PyPR2.moveHeadTo(0.0,0.0)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	
@@ -296,13 +302,13 @@ def refill():
 	PyPR2.moveHeadTo(0.1,0.3)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**right_refill)
-	PyPR2.moveHeadTo(-0.2,0.3)
+	PyPR2.moveHeadTo(-0.7,0.3)
 	time.sleep(3)
-	PyPR2.moveHeadTo(0.0,0.3)
+	PyPR2.moveHeadTo(-0.2,0.3)
 	PyPR2.moveArmWithJointPos(**left_refill)
 	time.sleep(4)
 	PyPR2.moveArmWithJointPos(**right_pick)
-	PyPR2.moveHeadTo(0.0,0.14)
+	PyPR2.moveHeadTo(-0.2,0.19)
 	time.sleep(2)
 	PyPR2.closeGripper(2)
 	time.sleep(3)
@@ -318,5 +324,12 @@ def close():
 	time.sleep(10)
 	PyPR2.openGripper(1)
 	time.sleep(10)
-	PyPR2.closeGripper(1)	
+	PyPR2.closeGripper(1)
+
+def play():
+	time.sleep(4)
+	alt_bow_arrow()
+	time.sleep(3)
+	refill()
+	
 
