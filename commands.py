@@ -114,7 +114,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 	PyPR2.say("Target Detect ed")
 	PyPR2.moveTorsoBy(0.1,3)
-	alt_bow_arrow()
+	PyPR2.moveBodyTo(0.1,0.0,0.0,4)
 	
 	
 	
