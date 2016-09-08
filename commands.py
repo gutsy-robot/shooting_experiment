@@ -130,7 +130,7 @@ def onHumanTracking(tracking_objs):
 	
 	if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
 
-	
+			PyPR2.moveBodyTo(0.2,0.0,0.0,2)
 			if CONDITION_TAG != 1:
 				CONDITION_TAG =1
 
