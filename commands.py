@@ -79,9 +79,11 @@ def get_current_yaw():
 	return a
 
 def find_human():
-	while get_current_yaw<2.0:
+	while get_current_yaw()<2.0 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_cw()
-
+	if get_current_yaw() >2.0 and HUMAN_DETECTION_COUNTER ==0:
+		while get_current_yaw()>2.0 and HUMAN_DETECTION_COUNTER ==0:
+			revolve_acw()
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
