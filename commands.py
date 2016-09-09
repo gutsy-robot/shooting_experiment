@@ -62,6 +62,16 @@ CONDITION_TAG = 0
 movement_tracker = []
 objects = 0
 head_yaw_list = []
+HUMAN_DETECTION_COUNTER =0
+
+
+def search():
+	if HUMAN_DETECTION_COUNTER == 0:
+		i = 0
+		for j in range(0,20):
+			PyPR2.moveHeadTo(float(i/3),0.0)
+			time.sleep(6)
+
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
@@ -115,7 +125,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	PyPR2.say("Target Detect ed")
 	PyPR2.moveTorsoBy(0.1,3)
 	PyPR2.moveBodyTo(0.1,0.0,0.0,4)
-	
+	HUMAN_DETECTION+=1
 	
 	
 
