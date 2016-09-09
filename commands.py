@@ -70,6 +70,7 @@ def search():
 		i = 0
 		for j in range(0,20):
 			PyPR2.moveHeadTo(float(i/3),0.0)
+			i = j
 			time.sleep(10)
 
 
