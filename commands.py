@@ -69,6 +69,20 @@ def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
 	PyPR2.moveHeadTo(a+0.3,0.0)
 
+def revolve_acw():
+	(a,b) = PyPR2.getHeadPos()
+	PyPR2.moveHeadTo(a-0.3,0.0)
+
+
+def get_current_yaw():
+	(a,b) = PyPR2.getHeadPos()
+	return a
+
+def find_human():
+	while get_current_yaw<2.0:
+		revolve_cw()
+
+
 def arm_back():
 	obj1 = spr.Skilled_PR2()
 	obj1.larm_reference = False
