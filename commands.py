@@ -66,12 +66,18 @@ HUMAN_DETECTION_COUNTER =0
 
 
 def search():
-	if HUMAN_DETECTION_COUNTER == 0:
-		i = 0
-		for j in range(0,20):
-			PyPR2.moveHeadTo(float(i/3),0.0)
-			i = j
-			time.sleep(10)
+	while HUMAN_DETECTION_COUNTER == 0:
+		PyPR2.moveHeadTo(0.0,0.0)
+		time.sleep(4)
+		PyPR2.moveHeadTo(0.3,0.0)
+		time.sleep(4)
+		PyPR2.moveHeadTo(0.6,0.0)
+		time.sleep(4)
+		PyPR2.moveHeadTo(0.9,0.0)
+		time.sleep(4)
+		PyPR2.moveHeadTo(1,3,0.0)
+		time.sleep(4)
+		search()
 
 
 def arm_back():
@@ -126,7 +132,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	PyPR2.say("Target Detect ed")
 	PyPR2.moveTorsoBy(0.1,3)
 	PyPR2.moveBodyTo(0.1,0.0,0.0,4)
-	HUMAN_DETECTION+=1
+	HUMAN_DETECTION_COUNTER+=1
 	
 	
 
