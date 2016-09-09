@@ -65,20 +65,9 @@ head_yaw_list = []
 HUMAN_DETECTION_COUNTER =0
 
 
-def search():
-	while HUMAN_DETECTION_COUNTER == 0:
-		PyPR2.moveHeadTo(0.0,0.0)
-		time.sleep(4)
-		PyPR2.moveHeadTo(0.3,0.0)
-		time.sleep(4)
-		PyPR2.moveHeadTo(0.6,0.0)
-		time.sleep(4)
-		PyPR2.moveHeadTo(0.9,0.0)
-		time.sleep(4)
-		PyPR2.moveHeadTo(1,3,0.0)
-		time.sleep(4)
-		search()
-
+def revolve_cw():
+	(a,b)= PyPR2.getHeadPos()
+	PyPR2.moveHeadTo(a+0.3,0.0)
 
 def arm_back():
 	obj1 = spr.Skilled_PR2()
