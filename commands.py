@@ -223,7 +223,7 @@ def onHumanTracking(tracking_objs):
       				PyPR2.updateHeadPos( chx, chy )
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
-			PyPR2.moveTorsoBy(0.05,2)
+			#PyPR2.moveTorsoBy(0.05,2)
 	
 	                movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	else:
