@@ -94,12 +94,15 @@ def find_human():
 
 		revolve_acw()
 
-	if PyPR2.getHeadPos()[0] >0.9:
+	if PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = -1
-		find_human()
-	if PyPR2.getHeadPos()[0] <-0.7:
+		
+	if PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = 1
-		find_human()
+
+	if HUMAN_DETECTION_COUNTER!=0:
+		sys.exit()
+		
 		
 def arm_back():
 	obj1 = spr.Skilled_PR2()
