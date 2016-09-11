@@ -64,6 +64,7 @@ objects = 0
 head_yaw_list = []
 HUMAN_DETECTION_COUNTER =0
 torso_pos = []
+torso_counter = 0
 
 
 
@@ -81,12 +82,8 @@ def get_current_yaw():
 	return a
 
 def find_human():
-	while get_current_yaw()<2.0 and HUMAN_DETECTION_COUNTER ==0:
-		revolve_cw()
-	if get_current_yaw() >2.0 and HUMAN_DETECTION_COUNTER ==0:
-		while get_current_yaw()>2.0 and HUMAN_DETECTION_COUNTER ==0:
-			revolve_acw()
-
+	while HUMAN_DETECTION_COUNTER ==0:
+		revolve.cw()
 def arm_back():
 	obj1 = spr.Skilled_PR2()
 	obj1.larm_reference = False
