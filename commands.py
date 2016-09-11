@@ -71,10 +71,12 @@ revolve_counter= 1
 
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
+	PyPR2.say("searching")
 	PyPR2.moveHeadTo(a+0.3,0.0)
 
 def revolve_acw():
 	(a,b) = PyPR2.getHeadPos()
+	PyPR2.say("searching")
 	PyPR2.moveHeadTo(a-0.3,0.0)
 
 
@@ -88,6 +90,7 @@ def find_human():
 	while HUMAN_DETECTION_COUNTER ==0 and revolve_counter==1 and PyPR2.getHeadPos()[0]<1.2:
 	
 		revolve_cw()
+		
 
 	
 	while HUMAN_DETECTION_COUNTER==0 and revolve_counter==-1 and PyPR2.getHeadPos()[0]>-0.9:
@@ -104,6 +107,10 @@ def find_human():
 		revolve_counter = 1
 		revolve_cw()
 		find_human()
+
+	if HUMAN_DETECTION_COUNTER != 0:
+		PyPR2.say("Target Found")
+		sys.exit()
 
 	
 		
