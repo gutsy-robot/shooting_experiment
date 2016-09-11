@@ -94,14 +94,15 @@ def find_human():
 
 		revolve_acw()
 
-	if PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
+	while PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = -1
+		revolve_acw()
 		
-	if PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
+	while PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = 1
+		revolve_cw()
 
-	if HUMAN_DETECTION_COUNTER!=0:
-		sys.exit()
+	
 		
 		
 def arm_back():
