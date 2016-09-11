@@ -63,6 +63,8 @@ movement_tracker = []
 objects = 0
 head_yaw_list = []
 HUMAN_DETECTION_COUNTER =0
+torso_pos = []
+
 
 
 def revolve_cw():
@@ -142,6 +144,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 
 def onHumanTracking(tracking_objs):
+	global torso_pos
 	global movement_tracker
 	global CONDITION_TAG	
 	global head_yaw_list	
@@ -149,7 +152,7 @@ def onHumanTracking(tracking_objs):
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
-	
+	torso_pos.append(focus_obj['est_pos'])
 	if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
 
 			PyPR2.moveBodyTo(0.2,0.0,0.0,2)
