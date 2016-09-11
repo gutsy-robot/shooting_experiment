@@ -83,7 +83,7 @@ def get_current_yaw():
 
 def find_human():
 	while HUMAN_DETECTION_COUNTER ==0:
-		revolve.cw()
+		revolve_cw()
 def arm_back():
 	obj1 = spr.Skilled_PR2()
 	obj1.larm_reference = False
