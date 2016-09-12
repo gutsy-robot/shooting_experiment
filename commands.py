@@ -71,12 +71,12 @@ revolve_counter= 1
 
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
-	PyPR2.say("searching")
+	#PyPR2.say("searching")
 	PyPR2.moveHeadTo(a+0.3,0.0)
 
 def revolve_acw():
 	(a,b) = PyPR2.getHeadPos()
-	PyPR2.say("searching")
+	#PyPR2.say("searching")
 	PyPR2.moveHeadTo(a-0.3,0.0)
 
 
