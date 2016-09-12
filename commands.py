@@ -87,33 +87,29 @@ def get_current_yaw():
 def find_human():
 	
 	global HUMAN_DETECTION_COUNTER,revolve_counter
-
-	if HUMAN_DETECTION_COUNTER != 0:
-		PyPR2.say("Target Found")
-
-	if HUMAN_DETECTION_COUNTER ==0 and revolve_counter==1 and PyPR2.getHeadPos()[0]<1.2:
+	while HUMAN_DETECTION_COUNTER ==0 and revolve_counter==1 and PyPR2.getHeadPos()[0]<1.2:
 	
 		revolve_cw()
-		find_human()
+		
 
 	
-	if HUMAN_DETECTION_COUNTER==0 and revolve_counter==-1 and PyPR2.getHeadPos()[0]>-0.9:
+	while HUMAN_DETECTION_COUNTER==0 and revolve_counter==-1 and PyPR2.getHeadPos()[0]>-0.9:
 
 		revolve_acw()
-		find_human()
 
-	if PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
+	while PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = -1
 		revolve_acw()
 		find_human()
 
 		
-	if PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
+	while PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
 		revolve_counter = 1
 		revolve_cw()
 		find_human()
 
-	
+	if HUMAN_DETECTION_COUNTER != 0:
+		PyPR2.say("Target Found")
 		
 
 	
@@ -176,6 +172,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 
 def onHumanTracking(tracking_objs):
+	SHOOTING_TAG = 0
 	global torso_pos
 	global movement_tracker
 	global CONDITION_TAG	
