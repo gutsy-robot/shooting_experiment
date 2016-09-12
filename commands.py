@@ -180,7 +180,7 @@ def onHumanTracking(tracking_objs):
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
-	torso_pos.append(focus_obj['est_pos'])
+	adjust_to_shooting()
 	if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
 
 			PyPR2.moveBodyTo(0.2,0.0,0.0,2)
