@@ -110,7 +110,7 @@ def find_human():
 
 	if HUMAN_DETECTION_COUNTER != 0:
 		PyPR2.say("Target Found")
-		sys.exit()
+		
 
 	
 		
