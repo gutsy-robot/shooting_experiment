@@ -108,8 +108,8 @@ def find_human():
 		revolve_cw()
 		find_human()
 
-	if HUMAN_DETECTION_COUNTER != 0:
-		PyPR2.say("Target Found")
+	#if HUMAN_DETECTION_COUNTER != 0:
+		#PyPR2.say("Target Found")
 		
 
 	
@@ -385,4 +385,17 @@ def play():
 	time.sleep(3)
 	refill()
 	
+
+def check_head_proximity():
+	(a,b) = PyPR2.getHeadPos()
+	if a>0.5 or a<-0.5:
+		return True
+	else:
+		return False
+
+def adjust_to_shooting():
+	if check_head_proximity == True:
+		PyPR2.moveBodyTo(0.0,0.0,(0.55)*a,1)
+		PyPR2.moveHeadTo(0.0,0.1)
+
 
