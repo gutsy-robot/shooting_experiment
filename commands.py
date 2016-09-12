@@ -394,7 +394,7 @@ def check_head_proximity():
 		return False
 
 def adjust_to_shooting():
-	if check_head_proximity == True:
+	if check_head_proximity() == True:
 		PyPR2.moveBodyTo(0.0,0.0,(0.55)*a,1)
 		PyPR2.moveHeadTo(0.0,0.1)
 
