@@ -209,18 +209,18 @@ def onHumanTracking(tracking_objs):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	if focus_obj['est_pos'][0]<=5 and focus_obj['est_pos'][0] >4:
+	if focus_obj['est_pos'][0]>2
 		if last_action_counter >1:
 			PyPR2.say("Further")
-			PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+			PyPR2.moveBodyTo(0.041,0.0,0.0,1)
 			last_action_counter=1
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=1
-	elif focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
+	elif focus_obj['est_pos'][0]<=2 and focus_obj['est_pos'][0] >1:
 		if last_action_counter >2:
 				PyPR2.say("Move Back")
-				PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+				PyPR2.moveBodyTo(0.041,0.0,0.0,1)
 				last_action_counter=2
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
@@ -239,7 +239,7 @@ def onHumanTracking(tracking_objs):
 	              
 				
 
-	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
+	elif focus_obj['est_pos'][0]<=0.5 and focus_obj['est_pos'][0] >1:
 			
 				if last_action_counter >2:
 					PyPR2.say("Move")
@@ -254,7 +254,7 @@ def onHumanTracking(tracking_objs):
 				#previous_pos = focus_obj['est_pos'][0]
 				
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
-	elif focus_obj['est_pos'][0] <2:
+	elif focus_obj['est_pos'][0] <0.5:
 			PyPR2.closeGripper(2)
 			PyPR2.moveArmWithJointPos(**best_pullback)
 			time.sleep(2)
