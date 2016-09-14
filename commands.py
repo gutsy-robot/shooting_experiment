@@ -265,7 +265,8 @@ def onHumanTracking(tracking_objs):
 				PyPR2.moveArmWithJointPos(**best_pullback)
 				time.sleep(2)
 				PyPR2.openGripper(2)
-				PyPR2.moveArmWithJointPos(**right_release)	
+				PyPR2.moveArmWithJointPos(**right_release)
+				last_action_counter=4	
       			
 			'''
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
