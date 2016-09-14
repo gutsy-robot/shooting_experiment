@@ -195,8 +195,8 @@ def onHumanDetected(objtype, trackid, nameid, status):
 def onHumanTracking(tracking_objs):
 	
 	SHOOTING_TAG = 0
-	global start_time,last_action_counter
-	global movement_tracker
+	global start_time,last_action_counter,movement_tracker
+	
 	
 	movement_tracker.append(last_action_counter)
 	focus_obj = tracking_objs[0]
