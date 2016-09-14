@@ -198,7 +198,10 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	#PyPR2.moveBodyTo(0.1,0.0,0.0,4)
 	HUMAN_DETECTION_COUNTER+=1
 	start_time = time.time()
-	isStationery()
+	if torso_position_counter ==0:
+		PyPR2.moveTorsoBy(0.1,3)
+		torso_position_counter +=1
+	#isStationery()
 	
 	
 
@@ -215,19 +218,21 @@ def onHumanTracking(tracking_objs):
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
-	adjust_to_shooting()
+	#adjust_to_shooting()
 	if focus_obj['est_pos'][0]<=4 and focus_obj['est_pos'][0] >3:
 
-			
+			adjust_to_shooting()
 			if CONDITION_TAG != 1:
 				CONDITION_TAG =1
 
 			track_human(focus_obj)
+			adjust_to_shooting()
+			PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
-			PyPR2.moveArmWithJointPos(**left_shooting)	
-			PyPR2.moveArmWithJointPos(**alt_right_intermediate)	
-			PyPR2.moveBodyTo(0.2,0.0,0.0,1)		
+			#PyPR2.moveArmWithJointPos(**left_shooting)	
+			#PyPR2.moveArmWithJointPos(**alt_right_intermediate)	
+			#PyPR2.moveBodyTo(0.2,0.0,0.0,1)		
 	              
 				
 
@@ -268,8 +273,8 @@ def onHumanTracking(tracking_objs):
       			
 	
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))'''
-			PyPR2.closeGripper(2)
-			time.sleep(2)
+			#PyPR2.closeGripper(2)
+			#time.sleep(2)
 			#PyPR2.moveHeadTo(0.0,0.18)
 			PyPR2.moveArmWithJointPos(**best_pullback)
 	
