@@ -125,7 +125,7 @@ def find_human():
 	
 			revolve_acw()
 
-	while PyPR2.getHeadPos()[0] >1.2 a:
+	while PyPR2.getHeadPos()[0] >1.2:
 		if HUMAN_DETECTION_COUNTER !=0:
 			PyPR2.say("Tar gate Detected")
 
