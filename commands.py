@@ -253,7 +253,7 @@ def onHumanTracking(tracking_objs):
 				
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	elif focus_obj['est_pos'][0] <2:
-			
+			PyPR2.closeGripper(2)
 			PyPR2.moveArmWithJointPos(**best_pullback)
 			time.sleep(2)
 			PyPR2.openGripper(2)
