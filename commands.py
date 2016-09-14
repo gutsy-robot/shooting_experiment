@@ -192,6 +192,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 
 def onHumanTracking(tracking_objs):
+	track_human(focus_obj)
 	SHOOTING_TAG = 0
 	global torso_pos, start_time
 	#global movement_tracker
@@ -211,7 +212,7 @@ def onHumanTracking(tracking_objs):
 			if CONDITION_TAG != 1:
 				CONDITION_TAG =1
 
-			track_human(focus_obj)
+			
 			adjust_to_shooting()
 			#PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
@@ -228,7 +229,7 @@ def onHumanTracking(tracking_objs):
 			if CONDITION_TAG != 2:
 				CONDITION_TAG =2
 			
-			track_human(focus_obj)
+			
 
 			#mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			#mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
@@ -254,7 +255,7 @@ def onHumanTracking(tracking_objs):
 				
       			if CONDITION_TAG != 3:
 				CONDITION_TAG =3
-			track_human(focus_obj)
+
 			'''
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
@@ -272,8 +273,7 @@ def onHumanTracking(tracking_objs):
 			#PyPR2.moveHeadTo(0.0,0.0)
 			#PyPR2.moveArmWithJointPos(**alt_right_release)
 
-	else:
-			track_human(focus_obj)
+	
 			
 	   
 
