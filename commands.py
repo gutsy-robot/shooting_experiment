@@ -192,13 +192,14 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 
 def onHumanTracking(tracking_objs):
-	track_human(focus_obj)
+	
 	SHOOTING_TAG = 0
 	global torso_pos, start_time
 	#global movement_tracker
 	global CONDITION_TAG	
 		
 	focus_obj = tracking_objs[0]
+	track_human(focus_obj)
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
