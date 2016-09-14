@@ -212,6 +212,7 @@ def onHumanTracking(tracking_objs):
 	if focus_obj['est_pos'][0]<=5 and focus_obj['est_pos'][0] >4:
 		if last_action_counter >1:
 			PyPR2.say("Further")
+			PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 			last_action_counter=1
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
@@ -220,6 +221,7 @@ def onHumanTracking(tracking_objs):
 		if last_action_counter >2:
 				PyPR2.say("Move Back")
 				last_action_counter=2
+				PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
 				last_action_counter=2		
