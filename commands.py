@@ -192,7 +192,7 @@ def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_up)
 	
 def onHumanDetected(objtype, trackid, nameid, status):	
-	global HUMAN_DETECTION_COUNTER,start_time
+	global HUMAN_DETECTION_COUNTER,start_time,torso_position_counter
 	#PyPR2.say("Target Detect ed")
 	#PyPR2.moveTorsoBy(0.1,3)
 	#PyPR2.moveBodyTo(0.1,0.0,0.0,4)
