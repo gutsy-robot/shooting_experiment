@@ -245,6 +245,8 @@ def onHumanTracking(tracking_objs):
 					PyPR2.say("Move")
 					last_action_counter=3
 				else:
+					PyPR2.moveArmWithJointPos(**alt_right_shooting)
+					PyPR2.moveArmWithJointPos(**left_shooting)
 					PyPR2.closeGripper(2)
 					last_action_counter =3
 			
