@@ -209,7 +209,7 @@ def onHumanTracking(tracking_objs):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	if focus_obj['est_pos'][0]>2
+	if focus_obj['est_pos'][0]>2:
 		if last_action_counter >1:
 			PyPR2.say("Further")
 			PyPR2.moveBodyTo(0.041,0.0,0.0,1)
