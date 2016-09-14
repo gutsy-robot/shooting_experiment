@@ -196,9 +196,9 @@ def onHumanTracking(tracking_objs):
 	
 	SHOOTING_TAG = 0
 	global start_time,last_action_counter
-	#global movement_tracker
+	global movement_tracker
 	
-		
+	movement_tracker.append(last_action_counter)
 	focus_obj = tracking_objs[0]
 	track_human(focus_obj)
 	elapsed_time = time.time() - start_time
