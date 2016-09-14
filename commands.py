@@ -213,7 +213,7 @@ def onHumanTracking(tracking_objs):
 
 			track_human(focus_obj)
 			adjust_to_shooting()
-			PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+			#PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
 			#PyPR2.moveArmWithJointPos(**left_shooting)	
@@ -245,6 +245,7 @@ def onHumanTracking(tracking_objs):
       			#	PyPR2.updateHeadPos( chx, chy )
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
+			adjust_to_shooting()
 			PyPR2.moveArmWithJointPos(**alt_right_shooting)
 			PyPR2.openGripper(2)	
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
