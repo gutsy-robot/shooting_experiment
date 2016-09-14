@@ -57,59 +57,95 @@ left_last = {'l_wrist_roll_joint': -0.0006999676759598117, 'l_forearm_roll_joint
 l2 = {'l_wrist_roll_joint': -2.679286471527397, 'l_forearm_roll_joint': -1.0647334824120165, 'l_elbow_flex_joint': -1.6303809584395477, 'l_shoulder_lift_joint': 0.6161894198928477, 'l_upper_arm_roll_joint': 1.2972309930029742, 'l_wrist_flex_joint': -0.07532257873391857, 'l_shoulder_pan_joint': 0.278424198259032}
 
 r2 = {'r_elbow_flex_joint': -0.7588612759107106, 'r_shoulder_lift_joint': -0.018610883082980017, 'r_upper_arm_roll_joint': 0.85072418681373554, 'r_wrist_roll_joint': -9.028506366421123, 'r_shoulder_pan_joint': -0.23149905283497807, 'r_forearm_roll_joint': -3.7593086396560755, 'r_wrist_flex_joint': -2.9993840838982049}
+
+
+#a = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
+#b= {'l_wrist_roll_joint': -3.062191134607524, 'l_forearm_roll_joint': -0.8025704843520763, 'l_elbow_flex_joint': -1.6901712622409446, 'l_shoulder_lift_joint': 0.30225766025221656, 'l_upper_arm_roll_joint': 1.1533927137491862, 'l_wrist_flex_joint': -0.08264695215512896, 'l_shoulder_pan_joint': 0.42176973966926046}
+
+#left_current = {'l_wrist_roll_joint': -2.5708187337191086, 'l_forearm_roll_joint': -1.2180861099179523, 'l_elbow_flex_joint': -1.6573083107568838, 'l_shoulder_lift_joint': 0.6408911374393484, 'l_upper_arm_roll_joint': 1.1389607793758965, 'l_wrist_flex_joint': -0.07641030173640845, 'l_shoulder_pan_joint': 0.16094552146418317}
+
+
+
+
+#right_current = {'r_elbow_flex_joint': -0.5144883150953158, 'r_shoulder_lift_joint': -0.16377577113022426, 'r_upper_arm_roll_joint': 0.48463183761920137, 'r_wrist_roll_joint': -2.8072093903002204, 'r_shoulder_pan_joint': -0.4293142418487461, 'r_forearm_roll_joint': -3.3093739973546157, 'r_wrist_flex_joint': -1.7845805453665076}
+left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': -1.2597938596093066, 'l_elbow_flex_joint': -1.663967763480526, 'l_shoulder_lift_joint': 0.5094306269350259, 'l_upper_arm_roll_joint': 1.2079133547149474, 'l_wrist_flex_joint': -0.07266853460784328, 'l_shoulder_pan_joint': 0.21964340655292902}
+
+
+right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
+
+
+
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
-objects = 0
-head_yaw_list = []
+track_x = []
+track_y = []
+diff_min = 0.03
+
 HUMAN_DETECTION_COUNTER =0
-torso_pos = []
-torso_counter = 0
+
+
 revolve_counter= 1
+torso_position_counter = 0
 
 
 
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
-	#PyPR2.say("searching")
+	PyPR2.say("searching")
 	PyPR2.moveHeadTo(a+0.3,0.0)
 
 def revolve_acw():
 	(a,b) = PyPR2.getHeadPos()
-	#PyPR2.say("searching")
+	PyPR2.say("searching")
 	PyPR2.moveHeadTo(a-0.3,0.0)
 
 
-def get_current_yaw():
-	(a,b) = PyPR2.getHeadPos()
-	return a
+
 
 def find_human():
 	
 	global HUMAN_DETECTION_COUNTER,revolve_counter
-	while HUMAN_DETECTION_COUNTER ==0 and revolve_counter==1 and PyPR2.getHeadPos()[0]<1.2:
+	while revolve_counter==1 and PyPR2.getHeadPos()[0]<1.5:
+		if HUMAN_DETECTION_COUNTER !=0:
+			PyPR2.say("Tar gate found")
+		else:
 	
-		revolve_cw()
+	
+			revolve_cw()
 		
 
 	
-	while HUMAN_DETECTION_COUNTER==0 and revolve_counter==-1 and PyPR2.getHeadPos()[0]>-0.9:
+	while revolve_counter==-1 and PyPR2.getHeadPos()[0]>-1.5:
 
-		revolve_acw()
+		if HUMAN_DETECTION_COUNTER !=0:
+			PyPR2.say("Tar gate found")
+		else:
+	
+	
+			revolve_acw()
 
-	while PyPR2.getHeadPos()[0] >0.9 and HUMAN_DETECTION_COUNTER ==0:
-		revolve_counter = -1
-		revolve_acw()
-		find_human()
+	while PyPR2.getHeadPos()[0] >1.2 a:
+		if HUMAN_DETECTION_COUNTER !=0:
+			PyPR2.say("Tar gate Detected")
+
+		else:
+	
+			revolve_counter = -1
+			revolve_acw()
+			find_human()
 
 		
-	while PyPR2.getHeadPos()[0] <-0.7 and HUMAN_DETECTION_COUNTER ==0:
-		revolve_counter = 1
-		revolve_cw()
-		find_human()
+	while PyPR2.getHeadPos()[0] <-1.2:
+		if HUMAN_DETECTION_COUNTER!=0:
+			PyPR2.say("tar gate detected")
+		else:
 
-	if HUMAN_DETECTION_COUNTER != 0:
-		PyPR2.say("Target Found")
+			revolve_counter = 1
+			revolve_cw()
+			find_human()
+
+
 		
 
 	
@@ -141,13 +177,6 @@ def head_hand_follower(hand_joint_list):
 		time.sleep(5)
 
 
-def revolve():
-	x = random.randint(10,15)
-	i = 0
-	for i in range(0,x):
-		y = PyPR2.getRobotPose()
-		(a,b,c) = y['position']
-		PyPR2.moveBodyTo(a,b,1.0,10)
 
 def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_shooting)
@@ -163,21 +192,26 @@ def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_up)
 	
 def onHumanDetected(objtype, trackid, nameid, status):	
-	global HUMAN_DETECTION_COUNTER
-	PyPR2.say("Target Detect ed")
+	global HUMAN_DETECTION_COUNTER,start_time
+	#PyPR2.say("Target Detect ed")
 	#PyPR2.moveTorsoBy(0.1,3)
 	#PyPR2.moveBodyTo(0.1,0.0,0.0,4)
 	HUMAN_DETECTION_COUNTER+=1
+	start_time = time.time()
+	isStationery()
 	
 	
 
 def onHumanTracking(tracking_objs):
 	SHOOTING_TAG = 0
-	global torso_pos
-	global movement_tracker
+	global torso_pos, start_time
+	#global movement_tracker
 	global CONDITION_TAG	
-	global head_yaw_list	
+		
 	focus_obj = tracking_objs[0]
+	elapsed_time = time.time() - start_time
+	track_x.append((focus_obj['est_pos'][0],elapsed_time))
+	track_y.append((focus_obj['est_pos'][1],elapsed_time))
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
@@ -192,8 +226,9 @@ def onHumanTracking(tracking_objs):
 				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
 				#previous_pos = focus_obj['est_pos'][0]
 			PyPR2.moveArmWithJointPos(**left_shooting)	
-			PyPR2.moveArmWithJointPos(**alt_right_intermediate)			
-	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
+			PyPR2.moveArmWithJointPos(**alt_right_intermediate)	
+			PyPR2.moveBodyTo(0.2,0.0,0.0,1)		
+	              
 				
 
 	elif focus_obj['est_pos'][0]<=3 and focus_obj['est_pos'][0] >2:
@@ -230,21 +265,7 @@ def onHumanTracking(tracking_objs):
 			track_human(focus_obj)
 			'''
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
-      			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
-      			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
-      			ofs_x = mid_x - 320
-      			ofs_y = mid_y - 240
-      			chx = chy = 0.0
-      			if math.fabs(ofs_x) > 10:
-       				chx = -ofs_x * 90.0 / 640 * 0.01745329252
-				head_yaw_list.append(chx)
-				
-      			if math.fabs(ofs_y) > 10:
-        			chy = ofs_y * 90.0 / 640 * 0.01745329252
-      				PyPR2.updateHeadPos( chx, chy )
-				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
-				#previous_pos = focus_obj['est_pos'][0]
-			#PyPR2.moveTorsoBy(0.05,2)
+      			
 	
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))'''
 			PyPR2.closeGripper(2)
@@ -253,32 +274,17 @@ def onHumanTracking(tracking_objs):
 			PyPR2.moveArmWithJointPos(**best_pullback)
 	
 	
-			time.sleep(3)
+			#time.sleep(3)
 			#PyPR2.moveHeadTo(0.0,0.1)
-			PyPR2.openGripper(2)
+			#PyPR2.openGripper(2)
 			#PyPR2.moveHeadTo(0.0,0.0)
-			PyPR2.moveArmWithJointPos(**alt_right_release)
+			#PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	else:
 			track_human(focus_obj)
-			'''
-			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
-      			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
-      			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
-      			ofs_x = mid_x - 320
-      			ofs_y = mid_y - 240
-      			chx = chy = 0.0
-      			if math.fabs(ofs_x) > 10:
-       				chx = -ofs_x * 90.0 / 640 * 0.01745329252
-				head_yaw_list.append(chx)
-				
-      			if math.fabs(ofs_y) > 10:
-        			chy = ofs_y * 90.0 / 640 * 0.01745329252
-      				PyPR2.updateHeadPos( chx, chy )	
-				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)		
-
+			
 	   
-'''
+
 	
 def reset():
 	global CONDITION_TAG, movement_tracker
@@ -286,31 +292,27 @@ def reset():
 	CONDITION_TAG = 0
 
 def onWaitedMeanHumanTracking(tracking_objs):
-	global objects
+	#global objects
 			
 	a = len(tracking_objs)
-	if a!=0:
-			objects =a 
-			movement_tracker.append(a)
-			x=0
-			y=0
-			for i in range(0,a):
-				x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2]/2
-				y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3]/2	
+	mid_x = 0
+	mid_y = 0
+	for i in range(0,a):
+		mid_x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2] / 2
+		mid_y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3] / 2
+		
+		ofs_x = mid_x - 320
+      		ofs_y = mid_y - 240
+      		chx = chy = 0.0
+			
+ 		if math.fabs(ofs_x) > 10:
+       			chx = -ofs_x * 90.0 / 640 * 0.01745329252	
+				#head_yaw_list.append(chx)
+				
+      		if math.fabs(ofs_y) > 10:
+        		chy = ofs_y * 90.0 / 640 * 0.01745329252
+      			PyPR2.updateHeadPos( chx, chy )	
 	
-			mid_x = x/a
-      			mid_y = y/a
-      			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
-      			ofs_x = mid_x - 320
-      			ofs_y = mid_y - 240
-      			chx = chy = 0.0
-      			if math.fabs(ofs_x) > 10:
-       				chx = -ofs_x * 90.0 / 640 * 0.01745329252
-      			if math.fabs(ofs_y) > 10:
-        			chy = ofs_y * 90.0 / 640 * 0.01745329252
-      				PyPR2.updateHeadPos( chx, chy )
-	
-
 
 def alt_bow_arrow():
 	PyPR2.openGripper(2)
@@ -340,19 +342,6 @@ def alt_bow_arrow():
 	#time.sleep(3)
 	
 
-#a = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
-#b= {'l_wrist_roll_joint': -3.062191134607524, 'l_forearm_roll_joint': -0.8025704843520763, 'l_elbow_flex_joint': -1.6901712622409446, 'l_shoulder_lift_joint': 0.30225766025221656, 'l_upper_arm_roll_joint': 1.1533927137491862, 'l_wrist_flex_joint': -0.08264695215512896, 'l_shoulder_pan_joint': 0.42176973966926046}
-
-#left_current = {'l_wrist_roll_joint': -2.5708187337191086, 'l_forearm_roll_joint': -1.2180861099179523, 'l_elbow_flex_joint': -1.6573083107568838, 'l_shoulder_lift_joint': 0.6408911374393484, 'l_upper_arm_roll_joint': 1.1389607793758965, 'l_wrist_flex_joint': -0.07641030173640845, 'l_shoulder_pan_joint': 0.16094552146418317}
-
-
-
-
-#right_current = {'r_elbow_flex_joint': -0.5144883150953158, 'r_shoulder_lift_joint': -0.16377577113022426, 'r_upper_arm_roll_joint': 0.48463183761920137, 'r_wrist_roll_joint': -2.8072093903002204, 'r_shoulder_pan_joint': -0.4293142418487461, 'r_forearm_roll_joint': -3.3093739973546157, 'r_wrist_flex_joint': -1.7845805453665076}
-left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': -1.2597938596093066, 'l_elbow_flex_joint': -1.663967763480526, 'l_shoulder_lift_joint': 0.5094306269350259, 'l_upper_arm_roll_joint': 1.2079133547149474, 'l_wrist_flex_joint': -0.07266853460784328, 'l_shoulder_pan_joint': 0.21964340655292902}
-
-
-right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
 
 
 
@@ -419,4 +408,18 @@ def track_human(focus_obj):
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
-	
+
+
+def isStationery():
+	global track_x,track_y
+	if len(track_x) >10 and len(track_y) >10:
+		a = track_x[-1][0]
+		for i in range(2,10):
+			b = track_x[-i][0]
+			if (a-b) > diff_min:
+				return False
+
+		return True
+
+
+			
