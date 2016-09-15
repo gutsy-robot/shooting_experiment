@@ -7,7 +7,7 @@ import sys
 import random
 import math
 import logging
-from magiks.specific_geometries.pr2 import skilled_pr2 as spr
+
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -74,7 +74,7 @@ left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': 
 right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
 
 
-obj = spr.Skilled_PR2()
+
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
@@ -229,8 +229,9 @@ def onHumanTracking(tracking_objs):
 	#adjust_to_shooting()
 	if d>=4:
 		if last_action_counter <4:
-			obj.larm_reference = True	
-			obj.arm_down()
+			#obj.larm_reference = True	
+			#obj.arm_down()
+			PyPR2.say("Good")
 			last_action_counter=4
 		elif last_action_counter == 4:		
 			PyPR2.moveBodyTo(0.04,0.0,0.0,1)
@@ -242,8 +243,8 @@ def onHumanTracking(tracking_objs):
 	elif d<=4 and d>3:
 		if last_action_counter <3:
 				PyPR2.say("Move")
-				obj.larm_reference = False
-				obj.arm_right()
+				#obj.larm_reference = False
+				#obj.arm_right()
 				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
 				last_action_counter=3
 		elif last_action_counter ==3:
@@ -271,8 +272,8 @@ def onHumanTracking(tracking_objs):
 			
 				if last_action_counter <2:
 					
-					obj.larm_reference = False
-					obj.arm_right()
+					#obj.larm_reference = False
+					#obj.arm_right()
 					last_action_counter=2
 				elif last_action_counter ==2 :
 					PyPR2.say("Move Back")	
