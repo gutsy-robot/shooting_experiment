@@ -7,7 +7,7 @@ import sys
 import random
 import math
 import logging
-
+from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -88,6 +88,7 @@ HUMAN_DETECTION_COUNTER =0
 revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
+sub_action_flag =1 
 
 
 def revolve_cw():
