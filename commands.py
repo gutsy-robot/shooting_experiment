@@ -74,7 +74,7 @@ left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': 
 right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
 
 
-
+obj = spr.Skilled_PR2()
 #previous_pos = 0
 CONDITION_TAG = 0 
 movement_tracker = []
@@ -228,17 +228,27 @@ def onHumanTracking(tracking_objs):
 	#adjust_to_shooting()
 	if d>=4:
 		if last_action_counter <4:
-			PyPR2.say("Further")
-			PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+			obj.larm_reference = True	
+			obj.arm_down()
 			last_action_counter=4
+		elif last_action_counter == 4:		
+			PyPR2.moveBodyTo(0.04,0.0,0.0,1)
+			last_action_counter=4
+			
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
 	elif d<=4 and d>3:
 		if last_action_counter <3:
-				PyPR2.say("Move Back")
-				PyPR2.moveBodyTo(0.01,0.0,0.0,1)
+				PyPR2.say("Move")
+				obj.larm_reference = False
+				obj.arm_right()
+				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
 				last_action_counter=3
+		elif last_action_counter ==3:
+				PyPR2.moveBodyTo(0.05,0.0,0.0,1)
+				last_action_counter = 3
+
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
 				PyPR2.moveArmWithJointPos(**left_shooting)
@@ -259,8 +269,13 @@ def onHumanTracking(tracking_objs):
 	elif d<=3 and d >2:
 			
 				if last_action_counter <2:
-					PyPR2.say("Move")
+					
+					obj.larm_reference = False
+					obj.arm_right()
 					last_action_counter=2
+				elif last_action_counter ==2 :
+					PyPR2.say("Move Back")	
+					last_action_counter =2 
 				else:
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
 					PyPR2.moveArmWithJointPos(**left_shooting)
@@ -273,7 +288,7 @@ def onHumanTracking(tracking_objs):
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
 	elif focus_obj['est_pos'][0] <2:
 
-			if last_action_counter <1:
+			if last_action_counter ==1:
 					PyPR2.say("Move")
 					last_action_counter=1 
 			
