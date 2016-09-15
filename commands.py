@@ -73,6 +73,9 @@ left_match = {'l_wrist_roll_joint': -2.534706330036445, 'l_forearm_roll_joint': 
 
 right_match = {'r_elbow_flex_joint': -0.6570874658080905, 'r_shoulder_lift_joint': -0.24608663131085867, 'r_upper_arm_roll_joint': 0.516382093240439, 'r_wrist_roll_joint': -2.6856889764620533, 'r_shoulder_pan_joint': -0.2559565049552889, 'r_forearm_roll_joint': -4.168171850222637, 'r_wrist_flex_joint': -2.0093041176809128}
 
+left_relax1 = {'l_wrist_roll_joint': -2.834887087795575, 'l_forearm_roll_joint': -1.6389815145702307, 'l_elbow_flex_joint': -0.3727577886508422, 'l_shoulder_lift_joint': 0.5434377860230166, 'l_upper_arm_roll_joint': 1.5918028090444551, 'l_wrist_flex_joint': -0.6869810180140399, 'l_shoulder_pan_joint': -0.15766460903871315}
+
+left_relax2 = {'l_wrist_roll_joint': -2.667551781092535, 'l_forearm_roll_joint': -1.711463914519283, 'l_elbow_flex_joint': -0.5470617251566096, 'l_shoulder_lift_joint': 0.7333533883925175, 'l_upper_arm_roll_joint': 1.6698956094865898, 'l_wrist_flex_joint': -0.8931262814459178, 'l_shoulder_pan_joint': -0.10112229600124878}
 
 
 #previous_pos = 0
@@ -231,10 +234,10 @@ def onHumanTracking(tracking_objs):
 		if last_action_counter <4:
 			#obj.larm_reference = True	
 			#obj.arm_down()
-			PyPR2.say("Good")
+			PyPR2.say("Move Back")
 			last_action_counter=4
 		elif last_action_counter == 4:		
-			PyPR2.moveBodyTo(0.04,0.0,0.0,1)
+			PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
 			last_action_counter=4
 			
 		else:		
@@ -248,7 +251,7 @@ def onHumanTracking(tracking_objs):
 				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
 				last_action_counter=3
 		elif last_action_counter ==3:
-				PyPR2.moveBodyTo(0.05,0.0,0.0,1)
+				PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
 				last_action_counter = 3
 
 		else:
@@ -421,7 +424,7 @@ def play():
 
 def check_head_proximity():
 	(a,b) = PyPR2.getHeadPos()
-	if a>0.5 or a<-0.5:
+	if a>0.3 or a<-0.3:
 		return True
 	else:
 		return False
