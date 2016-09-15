@@ -200,6 +200,7 @@ def onHumanTracking(tracking_objs):
 	
 	movement_tracker.append(last_action_counter)
 	focus_obj = tracking_objs[0]
+	d = math.sqrt(focus_obj['est_pos'][0]^2+focus_obj['est_pos'][1]^2)
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
@@ -220,12 +221,12 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
-	#adjust_to_shooting()
+	adjust_to_shooting()
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	if focus_obj['est_pos'][0]<=3.0 and focus_obj['est_pos'][0]>2.8:
+	if d>=4:
 		if last_action_counter >1:
 			PyPR2.say("Further")
 			PyPR2.moveBodyTo(0.041,0.0,0.0,1)
@@ -233,7 +234,7 @@ def onHumanTracking(tracking_objs):
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=1
-	elif focus_obj['est_pos'][0]<=2.8 and focus_obj['est_pos'][0] >2.6:
+	elif d<=4 and d>3:
 		if last_action_counter >2:
 				PyPR2.say("Move Back")
 				PyPR2.moveBodyTo(0.041,0.0,0.0,1)
@@ -255,7 +256,7 @@ def onHumanTracking(tracking_objs):
 	              
 				
 
-	elif focus_obj['est_pos'][0]<=2.6 and focus_obj['est_pos'][0] >2.2:
+	elif d<=3 and d >2:
 			
 				if last_action_counter >3:
 					PyPR2.say("Move")
@@ -270,7 +271,7 @@ def onHumanTracking(tracking_objs):
 				#previous_pos = focus_obj['est_pos'][0]
 				
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
-	elif focus_obj['est_pos'][0] <2.2:
+	elif focus_obj['est_pos'][0] <2:
 
 			if last_action_counter >4:
 					PyPR2.say("Move")
