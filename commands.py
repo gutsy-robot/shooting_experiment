@@ -200,7 +200,7 @@ def onHumanTracking(tracking_objs):
 	
 	movement_tracker.append(last_action_counter)
 	focus_obj = tracking_objs[0]
-	d = math.sqrt(focus_obj['est_pos'][0]^2+focus_obj['est_pos'][1]^2)
+	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
