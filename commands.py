@@ -200,7 +200,23 @@ def onHumanTracking(tracking_objs):
 	
 	movement_tracker.append(last_action_counter)
 	focus_obj = tracking_objs[0]
-	track_human(focus_obj)
+	#track_human(focus_obj)
+	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
+      			
+	mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
+     			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
+      	ofs_x = mid_x - 320
+      	ofs_y = mid_y - 240
+      	chx = chy = 0.0
+			
+      	if math.fabs(ofs_x) > 10:
+       		chx = -ofs_x * 90.0 / 640 * 0.01745329252	
+				#head_yaw_list.append(chx)
+				
+      	if math.fabs(ofs_y) > 10:
+        	chy = ofs_y * 90.0 / 640 * 0.01745329252
+      		PyPR2.updateHeadPos( chx, chy )
+
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
