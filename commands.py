@@ -225,7 +225,7 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
-	adjust_to_shooting()
+	adjust_to_shooting(chy)
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
@@ -429,10 +429,10 @@ def check_head_proximity():
 	else:
 		return False
 
-def adjust_to_shooting():
+def adjust_to_shooting(y):
 	if check_head_proximity() == True:
 		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
-		PyPR2.moveHeadTo(0.0,0.1)
+		PyPR2.moveHeadTo(0.0,y)
 
 def track_human(focus_obj):
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
