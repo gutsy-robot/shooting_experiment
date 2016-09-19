@@ -56,6 +56,7 @@ l2 = positions.l2
 
 r2 = positions.r2
 
+
 left_match = positions.left_match
 
 
@@ -76,10 +77,10 @@ diff_min = positions.diff_min
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
 
-revolve_counter= positions.revolve_counter
-torso_position_counter = positions.torso_position_counter
-last_action_counter = positions.last_action_counter
-sub_action_flag = positions.sub_action_flag
+revolve_counter= 1
+torso_position_counter = 0
+last_action_counter = 0
+sub_action_flag =1 
 
 
 def revolve_cw():
@@ -129,7 +130,8 @@ def find_human():
 
 	
 		
-	
+		
+
 
 
 def head_hand_follower(hand_joint_list):
