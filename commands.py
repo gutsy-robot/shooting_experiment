@@ -99,34 +99,32 @@ def revolve_acw():
 def find_human():
 	
 	global HUMAN_DETECTION_COUNTER,revolve_counter
-
-
-	if HUMAN_DETECTION_COUNTER ==0:
-			
-		
-		while revolve_counter==1 and PyPR2.getHeadPos()[0]<1.5 and HUMAN_DETECTION_COUNTER==0:
+	while revolve_counter==1 and PyPR2.getHeadPos()[0]<1.5 and HUMAN_DETECTION_COUNTER==0:
 			
 	
 				revolve_cw()
 		
 
 	
-		while revolve_counter==-1 and PyPR2.getHeadPos()[0]>-1.5 and HUMAN_DETECTION_COUNTER==0:
+	while revolve_counter==-1 and PyPR2.getHeadPos()[0]>-1.5 and HUMAN_DETECTION_COUNTER==0:
 	
 				revolve_acw()
 
-		while PyPR2.getHeadPos()[0] >1.2 and HUMAN_DETECTION_COUNTER==0:
+	while PyPR2.getHeadPos()[0] >1.2 and HUMAN_DETECTION_COUNTER==0:
 
 				revolve_counter = -1
 				revolve_acw()
 				find_human()
 
 		
-		while PyPR2.getHeadPos()[0] <-1.2 and HUMAN_DETECTION_COUNTER==0:
+	while PyPR2.getHeadPos()[0] <-1.2 and HUMAN_DETECTION_COUNTER==0:
 		
 				revolve_counter = 1
 				revolve_cw()
 				find_human()
+
+	if HUMAN_DETECTION_COUNTER!=0:
+				PyPR2.moveHeadTo(0.0,0.1)
 
 
 		
