@@ -124,7 +124,7 @@ def find_human():
 				find_human()
 
 	if HUMAN_DETECTION_COUNTER!=0:
-				PyPR2.moveHeadTo(0.0,0.1)
+				adjust_to_shooting(PyPR2.getHeadPos()[1])
 
 
 		
@@ -213,7 +213,7 @@ def onHumanTracking(tracking_objs):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	'''if d>=4:
+	if d>=4:
 		if last_action_counter <4:
 			#obj.larm_reference = True	
 			#obj.arm_down()
@@ -304,7 +304,7 @@ def onHumanTracking(tracking_objs):
 	
 			
 	   
-'''
+
 	
 def reset():
 	global CONDITION_TAG, movement_tracker
@@ -403,7 +403,7 @@ def play():
 
 def check_head_proximity():
 	(a,b) = PyPR2.getHeadPos()
-	if a>0.3 or a<-0.3:
+	if a>0.6 or a<-0.6:
 		return True
 	else:
 		return False
