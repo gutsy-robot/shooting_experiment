@@ -202,9 +202,9 @@ def onHumanTracking(tracking_objs):
 				
       	if math.fabs(ofs_y) > 10:
         	chy = ofs_y * 90.0 / 640 * 0.01745329252
-		adjust_to_shooting(chy)
+		
       		PyPR2.updateHeadPos( chx, chy )
-
+	adjust_to_shooting(chy)
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
@@ -213,7 +213,7 @@ def onHumanTracking(tracking_objs):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	if d>=4:
+	'''if d>=4:
 		if last_action_counter <4:
 			#obj.larm_reference = True	
 			#obj.arm_down()
@@ -288,11 +288,7 @@ def onHumanTracking(tracking_objs):
 				PyPR2.moveArmWithJointPos(**right_release)
 				last_action_counter=1	
       			
-			'''
-			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
-      			
-	
-	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))'''
+
 			#PyPR2.closeGripper(2)
 			#time.sleep(2)
 			#PyPR2.moveHeadTo(0.0,0.18)
@@ -308,7 +304,7 @@ def onHumanTracking(tracking_objs):
 	
 			
 	   
-
+'''
 	
 def reset():
 	global CONDITION_TAG, movement_tracker
