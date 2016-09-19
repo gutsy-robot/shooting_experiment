@@ -1,4 +1,4 @@
-from magiks.specific_geometries.pr2 import skilled_pr2 as spr
+#from magiks.specific_geometries.pr2 import skilled_pr2 as spr
 from SIMKit import RobotScript, Event
 import PyPR2
 import time
@@ -56,16 +56,6 @@ l2 = positions.l2
 
 r2 = positions.r2
 
-
-#a = {'r_elbow_flex_joint': -0.516515105054685, 'r_shoulder_lift_joint': -0.35132271565280027, 'r_upper_arm_roll_joint': 0.4847921924455716, 'r_wrist_roll_joint': -2.8233311186171237, 'r_shoulder_pan_joint': -0.15820960309140264, 'r_forearm_roll_joint': -3.178176804150745, 'r_wrist_flex_joint': -1.7377080510592138}
-#b= {'l_wrist_roll_joint': -3.062191134607524, 'l_forearm_roll_joint': -0.8025704843520763, 'l_elbow_flex_joint': -1.6901712622409446, 'l_shoulder_lift_joint': 0.30225766025221656, 'l_upper_arm_roll_joint': 1.1533927137491862, 'l_wrist_flex_joint': -0.08264695215512896, 'l_shoulder_pan_joint': 0.42176973966926046}
-
-#left_current = {'l_wrist_roll_joint': -2.5708187337191086, 'l_forearm_roll_joint': -1.2180861099179523, 'l_elbow_flex_joint': -1.6573083107568838, 'l_shoulder_lift_joint': 0.6408911374393484, 'l_upper_arm_roll_joint': 1.1389607793758965, 'l_wrist_flex_joint': -0.07641030173640845, 'l_shoulder_pan_joint': 0.16094552146418317}
-
-
-
-
-#right_current = {'r_elbow_flex_joint': -0.5144883150953158, 'r_shoulder_lift_joint': -0.16377577113022426, 'r_upper_arm_roll_joint': 0.48463183761920137, 'r_wrist_roll_joint': -2.8072093903002204, 'r_shoulder_pan_joint': -0.4293142418487461, 'r_forearm_roll_joint': -3.3093739973546157, 'r_wrist_flex_joint': -1.7845805453665076}
 left_match = positions.left_match
 
 
@@ -139,18 +129,7 @@ def find_human():
 
 	
 		
-		
-def arm_back():
-	obj1 = spr.Skilled_PR2()
-	obj1.larm_reference = False
-
-	obj2 = spr.Skilled_PR2()
-	obj2.larm_reference = True
 	
-	time.sleep(10)
-	obj1.arm_back()
-	PyPR2.closeGripper(2)
-	#obj2.arm_forward(dx=0.03)
 
 
 def head_hand_follower(hand_joint_list):
