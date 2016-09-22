@@ -450,6 +450,6 @@ def closest_obj_index(tracking_objs):
 	A=[]
 	for i in range(0,len(tracking_objs)):
 		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2))
-	min_index,min_value = min(enumerate(A), key=operator.itemgetter(1))
+	min_index, min_value = min(enumerate(A), key=operator.itemgetter(1))
 	return min_value
 			
