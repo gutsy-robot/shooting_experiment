@@ -449,7 +449,7 @@ def isStationery():
 def closest_obj_index(tracking_objs):
 	A=[]
 	for i in range(0,len(tracking_objs)):
-		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2))
+		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2)))
 	index_min = min(xrange(len(A)), key=A.__getitem__)
 	return index_min
 			
