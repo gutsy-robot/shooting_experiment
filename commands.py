@@ -7,7 +7,8 @@ import sys
 import random
 import math
 import logging
-
+import numpy
+import operator
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -185,8 +186,9 @@ def onHumanTracking(tracking_objs):
 	
 	
 	movement_tracker.append(last_action_counter)
-	focus_obj = tracking_objs[0]
-	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	object_index = closest_obj_index(human_distance(tracking_objs))
+	focus_obj = tracking_objs[object_index]
+	#d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
@@ -442,4 +444,16 @@ def isStationery():
 		return True
 
 
+
+def human_distance(tracking_objs):
+	A=[]
+	for i in range(0,len(tracking_objs)):
+		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2))
+
+
+	return A
+
+def closest_obj_index(A):
+	min_index,min_value = min(enumerate(values), key=operator.itemgetter(1))
+	return min_value
 			
