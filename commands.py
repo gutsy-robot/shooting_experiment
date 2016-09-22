@@ -185,8 +185,7 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker
 	
 	
-	movement_tracker.append(last_action_counter)
-	object_index = closest_obj_index(human_distance(tracking_objs))
+	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	#d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
@@ -445,15 +444,12 @@ def isStationery():
 
 
 
-def human_distance(tracking_objs):
+
+
+def closest_obj_index(tracking_objs):
 	A=[]
 	for i in range(0,len(tracking_objs)):
 		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2))
-
-
-	return A
-
-def closest_obj_index(A):
-	min_index,min_value = min(enumerate(values), key=operator.itemgetter(1))
+	min_index,min_value = min(enumerate(A), key=operator.itemgetter(1))
 	return min_value
 			
