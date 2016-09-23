@@ -177,7 +177,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 		PyPR2.moveTorsoBy(0.1,3)
 		torso_position_counter +=1
 	#isStationery()
-	IF HUMAN_DETECTION_COUNTER==0:
+	if HUMAN_DETECTION_COUNTER==0:
 	
 		track_x.append(('x','time'))
 	
