@@ -171,15 +171,16 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	#PyPR2.say("Target Detect ed")
 	#PyPR2.moveTorsoBy(0.1,3)
 	#PyPR2.moveBodyTo(0.1,0.0,0.0,4)
+	if HUMAN_DETECTION_COUNTER==0:
+	
+		track_x.append(('x','time'))
 	HUMAN_DETECTION_COUNTER+=1
 	start_time = time.time()
 	if torso_position_counter ==0:
 		PyPR2.moveTorsoBy(0.1,3)
 		torso_position_counter +=1
 	#isStationery()
-	if HUMAN_DETECTION_COUNTER==0:
 	
-		track_x.append(('x','time'))
 	
 
 def onHumanTracking(tracking_objs):
