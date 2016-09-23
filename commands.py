@@ -7,7 +7,7 @@ import sys
 import random
 import math
 import logging
-import numpy
+import csv
 import operator
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
@@ -82,6 +82,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
+csvfile = "/home/demoshare/shooting_experiment/test.csv"
 
 
 def revolve_cw():
@@ -177,6 +178,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 		torso_position_counter +=1
 	#isStationery()
 	
+	track_x.append(('x','time'))
 	
 
 def onHumanTracking(tracking_objs):
@@ -209,7 +211,9 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
-	
+	with open(csvfile, "w") as output:
+   		 writer = csv.writer(output, lineterminator='\n')
+    	         writer.writerows(track_x)
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
@@ -219,24 +223,25 @@ def onHumanTracking(tracking_objs):
 			#obj.larm_reference = True	
 			#obj.arm_down()
 			PyPR2.say("Move Back")
+			PyPR2.moveArmWithJointPos(**positions.left_refill)
 			last_action_counter=4
 		elif last_action_counter == 4:		
-			PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
-			last_action_counter=4
+			PyPR2.moveTorsoBy(0.03,2)
+
 			
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
 	elif d<=4 and d>3:
 		if last_action_counter <3:
-				PyPR2.say("Move")
+				PyPR2.moveArmWithJointPos(**positions.right_refill)
 				#obj.larm_reference = False
 				#obj.arm_right()
 				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
 				last_action_counter=3
 		elif last_action_counter ==3:
 				PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
-				last_action_counter = 3
+
 
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
@@ -264,11 +269,11 @@ def onHumanTracking(tracking_objs):
 					last_action_counter=2
 				elif last_action_counter ==2 :
 					PyPR2.say("Move Back")	
-					last_action_counter =2 
+
 				else:
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
 					PyPR2.moveArmWithJointPos(**left_shooting)
-					PyPR2.closeGripper(2)
+					#PyPR2.closeGripper(2)
 					last_action_counter =2
 			
 
