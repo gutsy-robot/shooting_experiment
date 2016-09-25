@@ -83,7 +83,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = /home/demoshare/shooting_experiment/test3.csv
+csvfile = "/home/demoshare/shooting_experiment/test3.csv"
 
 
 def revolve_cw():
@@ -214,7 +214,7 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
-	track_d.append(d,elapsed_time)
+	track_d.append((d,elapsed_time,last_action_counter))
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
