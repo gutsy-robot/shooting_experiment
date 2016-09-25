@@ -83,7 +83,9 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test4.csv"
+csvfile1 = "/home/demoshare/shooting_experiment/test5.csv"
+csvfile2 = "/home/demoshare/shooting_experiment/test6.csv"
+csvfile3 = "/home/demoshare/shooting_experiment/test7.csv"
 
 
 def revolve_cw():
@@ -215,9 +217,16 @@ def onHumanTracking(tracking_objs):
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
 	track_d.append((d,elapsed_time,last_action_counter))
-	with open(csvfile, "w") as output:
+	with open(csvfile1, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
+
+	with open(csvfile2, "w") as output:
+   		 writer = csv.writer(output, lineterminator='\n')
+    	         writer.writerows(track_x)
+	with open(csvfile3, "w") as output:
+   		 writer = csv.writer(output, lineterminator='\n')
+    	         writer.writerows(track_y)
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
