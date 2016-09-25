@@ -74,6 +74,7 @@ movement_tracker = positions.movement_tracker
 track_x = positions.track_x
 track_y = positions.track_y
 diff_min = positions.diff_min
+track_d = []
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
@@ -82,7 +83,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test2.csv"
+csvfile = /home/demoshare/shooting_experiment/test3.csv
 
 
 def revolve_cw():
@@ -191,7 +192,7 @@ def onHumanTracking(tracking_objs):
 	
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
-	#d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
@@ -213,9 +214,10 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append((focus_obj['est_pos'][0],elapsed_time))
 	track_y.append((focus_obj['est_pos'][1],elapsed_time))
+	track_d.append(d,elapsed_time)
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
-    	         writer.writerows(track_x)
+    	         writer.writerows(track_d)
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
