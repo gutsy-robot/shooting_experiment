@@ -82,7 +82,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test1.csv"
+csvfile = "/home/demoshare/shooting_experiment/test2.csv"
 
 
 def revolve_cw():
