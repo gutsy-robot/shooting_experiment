@@ -215,10 +215,10 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
-	track_d.append((d,last_action_counter))
+	track_d.append((d,focus_obj['est_pos'][0],focus_obj['est_pos'][1],last_action_counter))
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
-    	         writer.writerows(track_d,track_x,track_y,elapsed_time,last_action_counter)
+    	         writer.writerows(track_d)
 
 	
 	#PyPR2.moveTorsoBy(0.03,5)
