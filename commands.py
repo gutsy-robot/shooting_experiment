@@ -293,7 +293,7 @@ def onHumanTracking(tracking_objs):
 					PyPR2.say("Move")
 					last_action_counter=1 
 			
-			elif last_action_counter =>2:
+			elif last_action_counter >=2:
 					PyPR2.moveArmWithJointPos(**left_shooting)
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
 					
@@ -312,8 +312,9 @@ def onHumanTracking(tracking_objs):
 
 	
 			
-	elif d<1:
-			
+	
+	else:	
+		PyPR2.moveBodyTo(-0.05,0.0,0.0,1)	
 
 	
 def reset():
