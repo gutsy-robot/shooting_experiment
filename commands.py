@@ -74,7 +74,7 @@ movement_tracker = positions.movement_tracker
 track_x = positions.track_x
 track_y = positions.track_y
 diff_min = positions.diff_min
-track_d = []
+track_d = [('distance','x','y','action')]
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
@@ -287,7 +287,7 @@ def onHumanTracking(tracking_objs):
 				#previous_pos = focus_obj['est_pos'][0]
 				
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
-	elif focus_obj['est_pos'][0] <2:
+	elif d <2 :
 
 			if last_action_counter ==1:
 					PyPR2.say("Move")
@@ -316,7 +316,7 @@ def onHumanTracking(tracking_objs):
 
 	
 			
-	   
+
 
 	
 def reset():
@@ -358,17 +358,17 @@ def alt_bow_arrow():
 	PyPR2.moveHeadTo(0.0,0.3)
 	time.sleep(3)
 	PyPR2.moveArmWithJointPos(**alt_right_shooting)
-	time.sleep(5)
+	time.sleep(3)
 	PyPR2.closeGripper(2)
 	time.sleep(2)
 	PyPR2.moveHeadTo(0.0,0.18)
 	PyPR2.moveArmWithJointPos(**best_pullback)
 	
 	
-	time.sleep(5)
+	time.sleep(3)
 	PyPR2.moveHeadTo(0.0,0.1)
 	PyPR2.openGripper(2)
-	PyPR2.moveHeadTo(0.0,0.0)
+	#PyPR2.moveHeadTo(0.0,0.0)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	
@@ -464,4 +464,12 @@ def closest_obj_index(tracking_objs):
 		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2)))
 	index_min = min(xrange(len(A)), key=A.__getitem__)
 	return index_min
+
+def shooting_tracking(objtype,nameid,trackid,status):
+	HUMAN_DETECTION_COUNTER+=1
+	alt_bow_arrow()
+	time.sleep(3)
+	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
+	
+
 			
