@@ -435,7 +435,7 @@ def adjust_to_shooting(y):
 	global last_proximity
 	proximity = check_head_proximity()
 
-	if proximity== True and last_proximity=False:
+	if proximity== True and last_proximity==False:
 		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
 		#PyPR2.moveHeadTo(0.0,y)
 	last_proximity = proximity
