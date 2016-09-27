@@ -50,6 +50,10 @@ right_pick_further = positions.right_pick_further
 left_pick_further= positions.left_pick_further
 left_intermediate = positions.left_intermediate
 left_last = positions.left_last
+shooting_down = positions.shooting_down
+shooting_down_back = positions.shooting_down_back
+right_high_five = positions.right_high_five
+
 
 
 
@@ -225,23 +229,25 @@ def onHumanTracking(tracking_objs):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-	if d>=4:
-		if last_action_counter <4:
+	if d>=3.5:
+		if last_action_counter <4 and last_action_counter!=0:
 			#obj.larm_reference = True	
 			#obj.arm_down()
-			PyPR2.say("Move Back")
-			PyPR2.moveArmWithJointPos(**positions.left_refill)
+			
+			PyPR2.moveArmWithJointPos(**right_high_five)
+			PyPR.moveArmWithJointPos(**shooting_back_down)
 			last_action_counter=4
 		elif last_action_counter == 4:		
-			PyPR2.moveTorsoBy(0.03,2)
+			PyPR2.moveTorsoBy(0.1,2)
+			PyPR2.say("Move Back")
 
 			
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
 	elif d<=4 and d>3:
-		if last_action_counter <3:
-				PyPR2.moveArmWithJointPos(**positions.right_refill)
+		if last_action_counter <3 and last_action_counter!=0:
+				PyPR2.moveArmWithJointPos(**shooting_down)
 				#obj.larm_reference = False
 				#obj.arm_right()
 				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
@@ -249,7 +255,10 @@ def onHumanTracking(tracking_objs):
 		elif last_action_counter ==3:
 				PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
 
-
+		elif last_action_counter ==0:
+			PyPR2.moveArmWithJointPos(**left_shooting)
+			PyPR2.moveArWithJointPos(**alt_right_shooting)
+			PyPR2.say("Move Back")
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
 				PyPR2.moveArmWithJointPos(**left_shooting)
@@ -269,17 +278,18 @@ def onHumanTracking(tracking_objs):
 
 	elif d<=3 and d >2:
 			
-				if last_action_counter <2:
+				if last_action_counter <2 and last_action_counter!=0:
 					
 					#obj.larm_reference = False
 					#obj.arm_right()
+					PyPR2.moveArmWithJointPos(**left_relax1)
 					last_action_counter=2
-				elif last_action_counter ==2 :
-					PyPR2.say("Move Back")	
+				elif last_action_counter==0:
 
 				else:
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
 					PyPR2.moveArmWithJointPos(**left_shooting)
+					PyPR2.closeGripper(2)
 					#PyPR2.closeGripper(2)
 					last_action_counter =2
 			
@@ -314,7 +324,9 @@ def onHumanTracking(tracking_objs):
 			
 	
 	else:	
-		PyPR2.moveBodyTo(-0.05,0.0,0.0,1)	
+		PyPR2.moveBodyTo(-0.05,0.0,0.0,1)
+		PyPR2.moveArmWithJointPos(**alt_right_shooting)
+		PyPr2.moveArmWithJointPos(**left_shooting)	
 
 	
 def reset():
@@ -369,7 +381,7 @@ def alt_bow_arrow():
 	#PyPR2.moveHeadTo(0.0,0.0)
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
-	
+	PyPR2.moveHeadTo(0.0,0.1)
 	#time.sleep(3)
 	
 
