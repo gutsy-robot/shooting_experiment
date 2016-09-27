@@ -284,7 +284,7 @@ def onHumanTracking(tracking_objs):
 					#obj.arm_right()
 					PyPR2.moveArmWithJointPos(**left_relax1)
 					last_action_counter=2
-				elif last_action_counter==0:
+				#elif last_action_counter==0:
 
 				else:
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
