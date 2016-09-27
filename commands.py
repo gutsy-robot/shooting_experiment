@@ -245,7 +245,7 @@ def onHumanTracking(tracking_objs):
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
-	elif d<=4 and d>3:
+	elif d<=3.5 and d>3:
 		if last_action_counter <3 and last_action_counter!=0:
 				PyPR2.moveArmWithJointPos(**shooting_down)
 				#obj.larm_reference = False
@@ -324,7 +324,7 @@ def onHumanTracking(tracking_objs):
 			
 	
 	else:	
-		PyPR2.moveBodyTo(-0.05,0.0,0.0,1)
+		PyPR2.moveBodyTo(0.025,0.0,0.0,1)
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
