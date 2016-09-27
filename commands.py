@@ -430,8 +430,7 @@ def check_head_proximity():
 		return True
 	else:
 		return False
-
-global last_proximity = False
+last_proximity = False
 def adjust_to_shooting(y):
 	global last_proximity
 	proximity = check_head_proximity()
