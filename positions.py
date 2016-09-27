@@ -81,4 +81,8 @@ track_y = []
 diff_min = 0.03
 
 HUMAN_DETECTION_COUNTER =0
+shooting_down = {'l_wrist_roll_joint': -3.1723630224960777, 'l_forearm_roll_joint': -1.4588456858061853, 'l_elbow_flex_joint': -0.1542987851730988, 'l_shoulder_lift_joint': 0.21419434530047926, 'l_upper_arm_roll_joint': 1.5918028090444551, 'l_wrist_flex_joint': -0.39921302047532226, 'l_shoulder_pan_joint': -0.22854976687893602}
 
+shooting_down_back = {'l_wrist_roll_joint': -1.8237605350890493, 'l_forearm_roll_joint': -2.0578522711792395, 'l_elbow_flex_joint': -1.5779739609187107, 'l_shoulder_lift_joint': 0.7691370408657019, 'l_upper_arm_roll_joint': 1.9109089135205286, 'l_wrist_flex_joint': -1.240588517361279, 'l_shoulder_pan_joint': 0.21458610289415292}
+
+right_high_five = {'r_elbow_flex_joint': -0.9904944141243551, 'r_shoulder_lift_joint': -0.33220426303119344, 'r_upper_arm_roll_joint': -0.6190904322847255, 'r_wrist_roll_joint': -8.873376985226024, 'r_shoulder_pan_joint': -1.3339912504481748, 'r_forearm_roll_joint': 1.5657471024908212, 'r_wrist_flex_joint': -0.5056960821590689}
