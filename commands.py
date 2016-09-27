@@ -483,7 +483,7 @@ def shooting_tracking(objtype,nameid,trackid,status):
 	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
 	
 
-def alt_bow_arrow():
+def alt_bow_arrow2():
 	PyPR2.openGripper(1)
 	PyPR2.moveHeadTo(0.0,0.15)
 	PyPR2.moveArmWithJointPos(**positions.right_shooting)
