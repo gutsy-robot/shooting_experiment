@@ -375,7 +375,7 @@ def alt_bow_arrow():
 	PyPR2.moveArmWithJointPos(**best_pullback)
 	
 	
-	time.sleep(3)
+	time.sleep(5)
 	PyPR2.moveHeadTo(0.0,0.1)
 	PyPR2.openGripper(2)
 	#PyPR2.moveHeadTo(0.0,0.0)
@@ -479,7 +479,7 @@ def shooting_tracking(objtype,nameid,trackid,status):
 	global HUMAN_DETECTION_COUNTER
 	HUMAN_DETECTION_COUNTER+=1
 	alt_bow_arrow()
-	time.sleep(3)
+	#time.sleep(3)
 	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
 	
 
