@@ -431,11 +431,15 @@ def check_head_proximity():
 	else:
 		return False
 
+global last_proximity = False
 def adjust_to_shooting(y):
-	if check_head_proximity() == True:
-		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
-		PyPR2.moveHeadTo(0.0,y)
+	global last_proximity
+	proximity = check_head_proximity()
 
+	if proximity== True and last_proximity=False:
+		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
+		#PyPR2.moveHeadTo(0.0,y)
+	last_proximity = proximity
 def track_human(focus_obj):
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
