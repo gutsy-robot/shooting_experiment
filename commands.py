@@ -33,7 +33,7 @@ right_pullback = positions.right_pullback
 left_shooting = positions.left_shooting
 
 right_pullback_alt = positions.right_pullback_alt
-best_pullback = positions.best_pullback
+best_pullback_right = positions.best_pullback_right
 
 right_up = positions.right_up
 alt_right_shooting = positions.alt_right_shooting
@@ -372,7 +372,7 @@ def alt_bow_arrow():
 	PyPR2.closeGripper(2)
 	time.sleep(2)
 	PyPR2.moveHeadTo(0.0,0.18)
-	PyPR2.moveArmWithJointPos(**best_pullback)
+	PyPR2.moveArmWithJointPos(**best_pullback_right)
 	
 	
 	time.sleep(5)
@@ -413,9 +413,9 @@ def refill():
 
 def close():
 	time.sleep(10)
-	PyPR2.openGripper(1)
+	PyPR2.openGripper(3)
 	time.sleep(10)
-	PyPR2.closeGripper(1)
+	PyPR2.closeGripper(3)
 
 def play():
 	time.sleep(4)
@@ -479,8 +479,34 @@ def shooting_tracking(objtype,nameid,trackid,status):
 	global HUMAN_DETECTION_COUNTER
 	HUMAN_DETECTION_COUNTER+=1
 	alt_bow_arrow()
-	#time.sleep(3)
+	time.sleep(3)
 	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
 	
 
-			
+def alt_bow_arrow():
+	PyPR2.openGripper(1)
+	PyPR2.moveHeadTo(0.0,0.15)
+	PyPR2.moveArmWithJointPos(**positions.right_shooting)
+	PyPR2.openGripper(1)
+	time.sleep(2)
+	PyPR2.moveHeadTo(0.0,0.0)
+	PyPR2.moveArmWithJointPos(**positions.alt_left_intermediate)
+	PyPR2.moveHeadTo(0.0,0.3)
+	time.sleep(3)
+	PyPR2.moveArmWithJointPos(**positions.alt_left_shooting)
+	time.sleep(3)
+	PyPR2.closeGripper(1)
+	time.sleep(2)
+	PyPR2.moveHeadTo(0.0,0.18)
+	PyPR2.moveArmWithJointPos(**positions.best_pullback_left)
+	
+	
+	time.sleep(5)
+	PyPR2.moveHeadTo(0.0,0.1)
+	PyPR2.openGripper(2)
+	#PyPR2.moveHeadTo(0.0,0.0)
+	PyPR2.moveArmWithJointPos(**alt_right_release)
+
+	PyPR2.moveHeadTo(0.0,0.1)
+	#time.sleep(3)
+				
