@@ -91,7 +91,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/sagrawal/shooting_experiment/test11.csv"
+csvfile = "/home/sagrawal/shooting_experiment/test12.csv"
 
 
 
@@ -201,7 +201,7 @@ def onHumanTracking(tracking_objs):
 	
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
-	#d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
