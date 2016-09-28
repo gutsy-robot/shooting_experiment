@@ -9,11 +9,11 @@ import math
 import logging
 import csv
 import operator
-import pandas as pd
+'''import pandas as pd
 import numpy as np
 import plotly.plotly as py
 import plotly.graph_objs as go
-
+'''
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
 pyinterval_path = '/usr/local/lib/python2.7/dist-packages/pyinterval-1.0b21-py2.7-linux-x86_64.egg/'
@@ -91,7 +91,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test11.csv"
+csvfile = "/home/sagrawal/shooting_experiment/test11.csv"
 
 
 
@@ -526,7 +526,7 @@ def alt_bow_arrow2():
 
 	PyPR2.moveHeadTo(0.0,0.1)
 	#time.sleep(3)
-
+'''
 def plot_graph(file_location):
 	df = pd.read_csv(file_location)
 	df.head()
@@ -536,4 +536,4 @@ def plot_graph(file_location):
                    plot_bgcolor='rgb(230, 230,230)')
 	fig = go.Figure(data=[trace1, trace2, trace3], layout=layout)
 	py.iplot(fig, filename='position-plot')
-				
+'''				
