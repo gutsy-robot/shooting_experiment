@@ -87,7 +87,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test0.csv"
+csvfile = "/home/demoshare/shooting_experiment/test9.csv"
 
 
 
@@ -239,18 +239,18 @@ def onHumanTracking(tracking_objs):
 			PyPR2.moveArmWithJointPos(**right_high_five)
 			PyPR.moveArmWithJointPos(**shooting_back_down)
 			last_action_counter=4
-			busymoving=5
+			#busymoving=3
 		elif last_action_counter == 4:		
 			PyPR2.moveTorsoBy(0.1,2)
 			
 			PyPR2.say("Move Back")
-			busymoving=10
+			busymoving=5
 
 			
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
-			busymoving=5
+			#busymoving=5
 	elif busymoving==0 and  d<=3.5 and d>3:
 		if last_action_counter <3 and last_action_counter!=0:
 				PyPR2.moveArmWithJointPos(**shooting_down)
