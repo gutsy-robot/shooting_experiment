@@ -91,7 +91,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/sagrawal/shooting_experiment/test12.csv"
+csvfile = "/home/demoshare/shooting_experiment/test12.csv"
 
 
 
