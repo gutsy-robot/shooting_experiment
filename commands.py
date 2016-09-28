@@ -239,15 +239,18 @@ def onHumanTracking(tracking_objs):
 			PyPR2.moveArmWithJointPos(**right_high_five)
 			PyPR.moveArmWithJointPos(**shooting_back_down)
 			last_action_counter=4
+			busymoving=5
 		elif last_action_counter == 4:		
 			PyPR2.moveTorsoBy(0.1,2)
-			busymoving=10
+			
 			PyPR2.say("Move Back")
+			busymoving=10
 
 			
 		else:		
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
+			busymoving=5
 	elif busymoving==0 and  d<=3.5 and d>3:
 		if last_action_counter <3 and last_action_counter!=0:
 				PyPR2.moveArmWithJointPos(**shooting_down)
@@ -255,6 +258,7 @@ def onHumanTracking(tracking_objs):
 				#obj.arm_right()
 				#PyPR2.moveBodyTo(0.01,0.0,0.0,1)
 				last_action_counter=3
+				
 		elif last_action_counter ==3:
 				PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
 				busymoving=10
@@ -330,7 +334,7 @@ def onHumanTracking(tracking_objs):
 	
 	elif busymoving==0 :	
 		busymoving=10
-		PyPR2.moveBodyTo(-0.025,0.0,0.0,0.1)
+		#PyPR2.moveBodyTo(-0.025,0.0,0.0,0.1)
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
