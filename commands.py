@@ -82,7 +82,7 @@ movement_tracker = positions.movement_tracker
 track_x = positions.track_x
 track_y = positions.track_y
 diff_min = positions.diff_min
-track_distance = [('time','x','action','object_index')]
+track_d = [('time','x','action','object_index')]
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
