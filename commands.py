@@ -9,6 +9,10 @@ import math
 import logging
 import csv
 import operator
+import pandas as pd
+import numpy as np
+import plotly.plotly as py
+import plotly.graph_objs as go
 
 numpy_path      = '/usr/lib/python2.7/dist-packages/'
 sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
@@ -78,7 +82,7 @@ movement_tracker = positions.movement_tracker
 track_x = positions.track_x
 track_y = positions.track_y
 diff_min = positions.diff_min
-track_d = [('time','distance','x','y','action')]
+track_distance = [('time','x','action','object_index')]
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
@@ -87,7 +91,7 @@ revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
 sub_action_flag =1 
-csvfile = "/home/demoshare/shooting_experiment/test10.csv"
+csvfile = "/home/demoshare/shooting_experiment/test11.csv"
 
 
 
@@ -197,7 +201,7 @@ def onHumanTracking(tracking_objs):
 	
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
-	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	#d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
@@ -219,7 +223,7 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
-	track_d.append((elapsed_time,d,focus_obj['est_pos'][0],focus_obj['est_pos'][1],last_action_counter))
+	track_d.append((elapsed_time,focus_obj['est_pos'][0],last_action_counter,object_index))
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
@@ -522,4 +526,14 @@ def alt_bow_arrow2():
 
 	PyPR2.moveHeadTo(0.0,0.1)
 	#time.sleep(3)
+
+def plot_graph(file_location):
+	df = pd.read_csv(file_location)
+	df.head()
+	trace1 = go.Scatter(x=df['time'], y=df['x'], mode='lines', name='x')
+	trace2 = go.Scatter(x=df['time'], y=df['action'], mode='lines', name='x')
+	layout = go.Layout(title='position-plot',
+                   plot_bgcolor='rgb(230, 230,230)')
+	fig = go.Figure(data=[trace1, trace2, trace3], layout=layout)
+	py.iplot(fig, filename='position-plot')
 				
