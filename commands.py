@@ -82,7 +82,7 @@ movement_tracker = positions.movement_tracker
 track_x = positions.track_x
 track_y = positions.track_y
 diff_min = positions.diff_min
-track_d = [('time','x','action','object_index')]
+track_d = [('time','x','y')]
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
@@ -149,20 +149,6 @@ def find_human():
 
 
 
-def head_hand_follower(hand_joint_list):
-	
-	
-
-	n = len(hand_joint_list)
-	for i in range(0,n):
-		PyPR2.moveArmWithJointPos(**hand_joint_list[i])
-		x = PyPR2.getArmPose(False)
-		(a,b,c) = x['position']
-		PyPR2.pointHeadTo("base_footprint",a,b,c)
-		time.sleep(5)
-
-
-
 def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.moveArmWithJointPos(**left_shooting)
@@ -223,7 +209,7 @@ def onHumanTracking(tracking_objs):
 	elapsed_time = time.time() - start_time
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
-	track_d.append((elapsed_time,focus_obj['est_pos'][0],last_action_counter,object_index))
+	track_d.append((elapsed_time,focus_obj['est_pos'][0],focus_obj['est_pos'][0]))
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
@@ -348,29 +334,6 @@ def reset():
 	movement_tracker = []
 	CONDITION_TAG = 0
 
-def onWaitedMeanHumanTracking(tracking_objs):
-	#global objects
-			
-	a = len(tracking_objs)
-	mid_x = 0
-	mid_y = 0
-	for i in range(0,a):
-		mid_x += tracking_objs[i]['bound'][0] + tracking_objs[i]['bound'][2] / 2
-		mid_y += tracking_objs[i]['bound'][1] + tracking_objs[i]['bound'][3] / 2
-		
-		ofs_x = mid_x - 320
-      		ofs_y = mid_y - 240
-      		chx = chy = 0.0
-			
- 		if math.fabs(ofs_x) > 10:
-       			chx = -ofs_x * 90.0 / 640 * 0.01745329252	
-				#head_yaw_list.append(chx)
-				
-      		if math.fabs(ofs_y) > 10:
-        		chy = ofs_y * 90.0 / 640 * 0.01745329252
-      			PyPR2.updateHeadPos( chx, chy )	
-	
-
 def alt_bow_arrow():
 	PyPR2.openGripper(2)
 	PyPR2.moveHeadTo(0.0,0.15)
@@ -451,7 +414,7 @@ def adjust_to_shooting(y):
 
 	if proximity== True and last_proximity==False:
 		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
-		#PyPR2.moveHeadTo(0.0,y)
+		PyPR2.moveHeadTo(0.0,y)
 	last_proximity = proximity
 def track_human(focus_obj):
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
@@ -468,20 +431,6 @@ def track_human(focus_obj):
       			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
       				PyPR2.updateHeadPos( chx, chy )
-
-
-def isStationery():
-	global track_x,track_y
-	if len(track_x) >10 and len(track_y) >10:
-		a = track_x[-1][0]
-		for i in range(2,10):
-			b = track_x[-i][0]
-			if (a-b) > diff_min:
-				return False
-
-		return True
-
-
 
 
 
@@ -525,15 +474,4 @@ def alt_bow_arrow2():
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	PyPR2.moveHeadTo(0.0,0.1)
-	#time.sleep(3)
-'''
-def plot_graph(file_location):
-	df = pd.read_csv(file_location)
-	df.head()
-	trace1 = go.Scatter(x=df['time'], y=df['x'], mode='lines', name='x')
-	trace2 = go.Scatter(x=df['time'], y=df['action'], mode='lines', name='x')
-	layout = go.Layout(title='position-plot',
-                   plot_bgcolor='rgb(230, 230,230)')
-	fig = go.Figure(data=[trace1, trace2, trace3], layout=layout)
-	py.iplot(fig, filename='position-plot')
-'''				
+
