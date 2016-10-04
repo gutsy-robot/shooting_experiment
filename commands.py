@@ -194,7 +194,7 @@ def timerActions( id ):
   #  timermanager.onTimerCall( id )
 
 def doStuff():
-       PyPR2.moveHeadTo(0.5,0.0)
+       PyPR2.tuckBothArms()
 
 def onHumanTracking(tracking_objs):
 	global busymoving
@@ -202,7 +202,7 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker,msgTryTimer
 	PyPR2.onTimer = timerActions
 	if msgTryTimer==-1:
-	   PyPR2.tuckBothArms()
+	   #PyPR2.tuckBothArms()
 	   msgTryTimer = PyPR2.addTimer( 1, -1, 1 )
 	'''
 	object_index = closest_obj_index(tracking_objs)
