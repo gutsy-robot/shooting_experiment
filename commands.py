@@ -202,7 +202,7 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker
 	PyPR2.onTimer = timerActions
 	if msgTryTimer==-1:
-	   PyPR2.onTimer = timerActions
+	   PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 	   msgTryTimer = PyPR2.addTimer( 10, -1, 10 )
 	
 	object_index = closest_obj_index(tracking_objs)
