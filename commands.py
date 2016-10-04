@@ -94,7 +94,7 @@ sub_action_flag =1
 csvfile = "/home/demoshare/shooting_experiment/test12.csv"
 
 
-
+check_var =0
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
 	#PyPR2.say("searching")
@@ -181,8 +181,9 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global myMessenger, msgTryTimer
-
+  global myMessenger, msgTryTimer,check_var
+  check_var +=1
+  
   if msgTryTimer == id :
     PyPR2.removeTimer( msgTryTimer )
     msgTryTimer = 0
