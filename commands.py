@@ -185,6 +185,7 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker
 	
 	
+	
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
@@ -210,10 +211,11 @@ def onHumanTracking(tracking_objs):
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
 	track_d.append((elapsed_time,focus_obj['est_pos'][0],focus_obj['est_pos'][0]))
+	'''	
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
-
+	'''
 	
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
@@ -414,7 +416,7 @@ def adjust_to_shooting(y):
 
 	if proximity== True and last_proximity==False:
 		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
-		PyPR2.moveHeadTo(0.0,y)
+		#PyPR2.moveHeadTo(0.0,y)
 	last_proximity = proximity
 def track_human(focus_obj):
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
