@@ -178,14 +178,32 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	#isStationery()
 	
 busymoving=0	
+msgTryTimer=-1
+
+def timerActions( id ):
+  global myMessenger, msgTryTimer
+
+  if msgTryTimer == id :
+    PyPR2.removeTimer( msgTryTimer )
+    msgTryTimer = 0
+    while True:
+       time.sleep(5)
+       doStuff()
+  #else:
+  #  timermanager.onTimerCall( id )
+
+def doStuff():
+       PyPR2.tuckBothArms()
 
 def onHumanTracking(tracking_objs):
 	global busymoving
 	SHOOTING_TAG = 0
 	global start_time,last_action_counter,movement_tracker
 	
-	
-	
+	if msgTryTimer==-1:
+	   PyPR2.onTimer = timerActions
+	   msgTryTimer = PyPR2.addTimer( 10*60, -1, 10*60 )
+	'''
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
@@ -330,7 +348,7 @@ def onHumanTracking(tracking_objs):
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
-	
+	'''
 def reset():
 	global CONDITION_TAG, movement_tracker
 	movement_tracker = []
