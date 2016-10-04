@@ -194,7 +194,7 @@ def timerActions( id ):
   #  timermanager.onTimerCall( id )
 
 def doStuff():
-       PyPR2.tuckBothArms()
+       PyPR2.moveHeadTo(0.5,0.0)
 
 def onHumanTracking(tracking_objs):
 	global busymoving
@@ -202,9 +202,9 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker
 	PyPR2.onTimer = timerActions
 	if msgTryTimer==-1:
-	   PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+	   PyPR2.tuckBothArms()
 	   msgTryTimer = PyPR2.addTimer( 10, -1, 10 )
-	
+	'''
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
@@ -230,11 +230,11 @@ def onHumanTracking(tracking_objs):
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
 	track_d.append((elapsed_time,focus_obj['est_pos'][0],focus_obj['est_pos'][0]))
-	'''	
+	
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
-	'''
+	
 	
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
@@ -349,7 +349,7 @@ def onHumanTracking(tracking_objs):
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
-	
+	'''
 def reset():
 	global CONDITION_TAG, movement_tracker
 	movement_tracker = []
