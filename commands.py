@@ -204,7 +204,7 @@ def onHumanTracking(tracking_objs):
 	if msgTryTimer==-1:
 	   PyPR2.onTimer = timerActions
 	   msgTryTimer = PyPR2.addTimer( 10, -1, 10 )
-	'''
+	
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
@@ -349,7 +349,7 @@ def onHumanTracking(tracking_objs):
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
-	'''
+	
 def reset():
 	global CONDITION_TAG, movement_tracker
 	movement_tracker = []
