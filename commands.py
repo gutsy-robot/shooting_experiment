@@ -181,14 +181,14 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global myMessenger, msgTryTimer,check_var
+  global msgTryTimer,check_var
   check_var +=1
   
   if msgTryTimer == id :
     PyPR2.removeTimer( msgTryTimer )
     msgTryTimer = 0
     while True:
-       time.sleep(5)
+       time.sleep(1)
        doStuff()
   #else:
   #  timermanager.onTimerCall( id )
