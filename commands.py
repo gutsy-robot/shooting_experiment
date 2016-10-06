@@ -182,7 +182,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 
 
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time,x,y
+  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y
   
   elapsed_time = time.time() - start_time
   
@@ -193,9 +193,7 @@ def timerActions( id ):
        #time.sleep(1)
     	adjust_to_shooting()
 	
-	track_x.append(x)
-	track_y.append(y)
-	track_d.append((elapsed_time,x,y))
+
 	
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
@@ -310,7 +308,7 @@ def timerActions( id ):
 			
 	
 	elif busymoving==0 :	
-		busymoving=10
+		#busymoving=10
 		#PyPR2.moveBodyTo(-0.025,0.0,0.0,0.1)
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
@@ -334,6 +332,10 @@ def onHumanTracking(tracking_objs):
 	y = focus_obj['est_pos'][1]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
+
+	track_x.append(x)
+	track_y.append(y)
+	track_d.append((elapsed_time,x,y))
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
 	mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
@@ -466,14 +468,14 @@ def closest_obj_index(tracking_objs):
 		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2)))
 	index_min = min(xrange(len(A)), key=A.__getitem__)
 	return index_min
-
+'''
 def shooting_tracking(objtype,nameid,trackid,status):
 	global HUMAN_DETECTION_COUNTER
 	HUMAN_DETECTION_COUNTER+=1
 	alt_bow_arrow()
 	time.sleep(3)
 	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
-	
+'''	
 
 def alt_bow_arrow2():
 	PyPR2.openGripper(1)
