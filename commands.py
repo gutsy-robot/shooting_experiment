@@ -94,7 +94,7 @@ sub_action_flag =1
 csvfile = "/home/demoshare/shooting_experiment/test12.csv"
 
 
-check_var =0
+
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
 	#PyPR2.say("searching")
@@ -182,51 +182,16 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global msgTryTimer,check_var
-  check_var +=1
+  global msgTryTimer
+  
+  
   
   if msgTryTimer == id :
     #PyPR2.removeTimer( msgTryTimer )
-    msgTryTimer = 0
+        msgTryTimer = 0
     #while True:
        #time.sleep(1)
-    doStuff()
-  #else:
-  #  timermanager.onTimerCall( id )
-
-def doStuff():
-       PyPR2.tuckBothArms()
-
-def onHumanTracking(tracking_objs):
-	global busymoving
-	SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer
-	PyPR2.onTimer =  timerActions
-	if msgTryTimer==-1:
-	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 1  )
-	'''
-	object_index = closest_obj_index(tracking_objs)
-	focus_obj = tracking_objs[object_index]
-	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
-	#track_human(focus_obj)
-	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
-      			
-	mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
-     			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
-      	ofs_x = mid_x - 320
-      	ofs_y = mid_y - 240
-      	chx = chy = 0.0
-			
-      	if math.fabs(ofs_x) > 10:
-       		chx = -ofs_x * 90.0 / 640 * 0.01745329252	
-				#head_yaw_list.append(chx)
-				
-      	if math.fabs(ofs_y) > 10:
-        	chy = ofs_y * 90.0 / 640 * 0.01745329252
-		
-      		PyPR2.updateHeadPos( chx, chy )
-	adjust_to_shooting(chy)
+    	adjust_to_shooting(chy)
 	elapsed_time = time.time() - start_time
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
@@ -350,6 +315,42 @@ def onHumanTracking(tracking_objs):
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
+  #else:
+  #  timermanager.onTimerCall( id )
+
+
+def onHumanTracking(tracking_objs):
+	global busymoving
+	SHOOTING_TAG = 0
+	global start_time,last_action_counter,movement_tracker,msgTryTimer
+	PyPR2.onTimer =  timerActions
+
+	object_index = closest_obj_index(tracking_objs)
+	focus_obj = tracking_objs[object_index]
+	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	#track_human(focus_obj)
+	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
+      			
+	mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
+     			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
+      	ofs_x = mid_x - 320
+      	ofs_y = mid_y - 240
+      	chx = chy = 0.0
+			
+      	if math.fabs(ofs_x) > 10:
+       		chx = -ofs_x * 90.0 / 640 * 0.01745329252	
+				#head_yaw_list.append(chx)
+				
+      	if math.fabs(ofs_y) > 10:
+        	chy = ofs_y * 90.0 / 640 * 0.01745329252
+		PyPR2.updateHeadPos( chx, chy )
+	if msgTryTimer==-1:
+	   #PyPR2.tuckBothArms()
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 1  )
+	
+	
+      	'''	
+
 	'''
 def reset():
 	global CONDITION_TAG, movement_tracker
@@ -430,7 +431,7 @@ def check_head_proximity():
 	else:
 		return False
 last_proximity = False
-def adjust_to_shooting(y):
+def adjust_to_shooting():
 	global last_proximity
 	proximity = check_head_proximity()
 
