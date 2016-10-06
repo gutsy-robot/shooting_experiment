@@ -86,7 +86,9 @@ track_d = [('time','x','y')]
 
 HUMAN_DETECTION_COUNTER = positions.HUMAN_DETECTION_COUNTER
 
+busymoving=0	
 
+msgTryTimer=-1
 revolve_counter= 1
 torso_position_counter = 0
 last_action_counter = 0
@@ -148,7 +150,7 @@ def find_human():
 		
 
 
-
+'''
 def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_shooting)
 	PyPR2.moveArmWithJointPos(**left_shooting)
@@ -161,7 +163,7 @@ def bow_arrow():
 	time.sleep(10)
 	PyPR2.openGripper(2)
 	PyPR2.moveArmWithJointPos(**right_up)
-	
+'''	
 def onHumanDetected(objtype, trackid, nameid, status):	
 	global HUMAN_DETECTION_COUNTER,start_time,torso_position_counter
 	#PyPR2.say("Target Detect ed")
@@ -177,9 +179,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 		torso_position_counter +=1
 	#isStationery()
 	
-busymoving=0	
 
-msgTryTimer=-1
 
 def timerActions( id ):
   global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time,x,y
