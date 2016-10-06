@@ -346,7 +346,7 @@ def onHumanTracking(tracking_objs):
 		PyPR2.updateHeadPos( chx, chy )
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 5  )
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
 	
 	
       	'''	
