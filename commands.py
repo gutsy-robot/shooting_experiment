@@ -182,7 +182,7 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global msgTryTimer
+  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter
   
   
   
@@ -191,7 +191,7 @@ def timerActions( id ):
         msgTryTimer = 0
     #while True:
        #time.sleep(1)
-    	adjust_to_shooting(chy)
+    	adjust_to_shooting()
 	elapsed_time = time.time() - start_time
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
