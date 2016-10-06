@@ -320,12 +320,10 @@ def timerActions( id ):
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y
+	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d
 
-	PyPR2.onTimer =  timerActions
-	if msgTryTimer==-1:
-	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
+	
+
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	x = focus_obj['est_pos'][0]
@@ -351,8 +349,10 @@ def onHumanTracking(tracking_objs):
       	if math.fabs(ofs_y) > 10:
         	chy = ofs_y * 90.0 / 640 * 0.01745329252
 	PyPR2.updateHeadPos( chx, chy )
-	
-	
+	PyPR2.onTimer =  timerActions
+	if msgTryTimer==-1:
+	   #PyPR2.tuckBothArms()
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
 	
       	'''	
 
