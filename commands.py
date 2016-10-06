@@ -190,7 +190,7 @@ def timerActions( id ):
     msgTryTimer = 0
     #while True:
        #time.sleep(1)
-       doStuff()
+    doStuff()
   #else:
   #  timermanager.onTimerCall( id )
 
