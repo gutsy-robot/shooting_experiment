@@ -188,7 +188,7 @@ def timerActions( id ):
   
   if msgTryTimer == id :
     #PyPR2.removeTimer( msgTryTimer )
-        msgTryTimer += 1
+        #msgTryTimer += 1
     #while True:
        #time.sleep(1)
     	adjust_to_shooting()
@@ -318,8 +318,8 @@ def timerActions( id ):
 
 
 def onHumanTracking(tracking_objs):
-	global busymoving
-	SHOOTING_TAG = 0
+	#global busymoving
+	#SHOOTING_TAG = 0
 	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y
 
 	PyPR2.onTimer =  timerActions
@@ -350,7 +350,7 @@ def onHumanTracking(tracking_objs):
 				
       	if math.fabs(ofs_y) > 10:
         	chy = ofs_y * 90.0 / 640 * 0.01745329252
-		PyPR2.updateHeadPos( chx, chy )
+	PyPR2.updateHeadPos( chx, chy )
 	
 	
 	
