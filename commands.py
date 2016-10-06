@@ -188,7 +188,7 @@ def timerActions( id ):
   
   if msgTryTimer == id :
     #PyPR2.removeTimer( msgTryTimer )
-        msgTryTimer = 0
+        msgTryTimer += 0
     #while True:
        #time.sleep(1)
     	adjust_to_shooting()
