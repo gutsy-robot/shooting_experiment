@@ -179,7 +179,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 		torso_position_counter +=1
 	#isStationery()
 	
-elapsed_time
+elapsed_time=0
 
 def timerActions( id ):
   global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time
