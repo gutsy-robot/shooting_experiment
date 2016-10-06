@@ -178,6 +178,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	#isStationery()
 	
 busymoving=0	
+
 msgTryTimer=-1
 
 def timerActions( id ):
@@ -185,10 +186,10 @@ def timerActions( id ):
   check_var +=1
   
   if msgTryTimer == id :
-    PyPR2.removeTimer( msgTryTimer )
+    #PyPR2.removeTimer( msgTryTimer )
     msgTryTimer = 0
-    while True:
-       time.sleep(1)
+    #while True:
+       #time.sleep(1)
        doStuff()
   #else:
   #  timermanager.onTimerCall( id )
@@ -200,10 +201,10 @@ def onHumanTracking(tracking_objs):
 	global busymoving
 	SHOOTING_TAG = 0
 	global start_time,last_action_counter,movement_tracker,msgTryTimer
-	PyPR2.onTimer = timerActions
+	PyPR2.onTimer =  
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 1 )
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 1  )
 	'''
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
