@@ -201,7 +201,7 @@ def onHumanTracking(tracking_objs):
 	global busymoving
 	SHOOTING_TAG = 0
 	global start_time,last_action_counter,movement_tracker,msgTryTimer
-	PyPR2.onTimer =  
+	PyPR2.onTimer =  timerActions
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
 	   msgTryTimer = PyPR2.addTimer( 1, -1, 1  )
