@@ -182,7 +182,7 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d
+  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time
   
   
   
