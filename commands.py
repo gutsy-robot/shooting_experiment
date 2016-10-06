@@ -184,15 +184,15 @@ msgTryTimer=-1
 def timerActions( id ):
   global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time
   
-  
+  elapsed_time = time.time() - start_time
   
   if msgTryTimer == id :
     #PyPR2.removeTimer( msgTryTimer )
-        msgTryTimer += 0
+        msgTryTimer += 1
     #while True:
        #time.sleep(1)
     	adjust_to_shooting()
-	elapsed_time = time.time() - start_time
+	
 	track_x.append(focus_obj['est_pos'][0])
 	track_y.append(focus_obj['est_pos'][1])
 	track_d.append((elapsed_time,focus_obj['est_pos'][0],focus_obj['est_pos'][0]))
@@ -206,7 +206,7 @@ def timerActions( id ):
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
 	#	PyPR2.moveHeadTo(0.2,1.0)
 	#adjust_to_shooting()
-        if busymoving>0: busymoving-=1
+        #if busymoving>0: busymoving-=1
 
 	if busymoving==0 and d>=3.5:
 		if last_action_counter <4 and last_action_counter!=0:
@@ -221,7 +221,7 @@ def timerActions( id ):
 			PyPR2.moveTorsoBy(0.1,2)
 			
 			PyPR2.say("Move Back")
-			busymoving=5
+			#busymoving=5
 
 			
 		else:		
@@ -238,12 +238,12 @@ def timerActions( id ):
 				
 		elif last_action_counter ==3:
 				PyPR2.moveBodyTo(0.07,0.0,0.0,0.51)
-				busymoving=10
+				#busymoving=10
 
 		elif last_action_counter ==0:
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			PyPR2.moveArWithJointPos(**alt_right_shooting)
-			busymoving=10
+			#busymoving=10
 			PyPR2.say("Move Back")
 		else:
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
@@ -288,7 +288,7 @@ def timerActions( id ):
 			if last_action_counter ==1:
 					PyPR2.say("Move")
 					last_action_counter=1 
-					busymoving=10
+					#busymoving=10
 			elif last_action_counter >=2:
 					PyPR2.moveArmWithJointPos(**left_shooting)
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
@@ -346,7 +346,7 @@ def onHumanTracking(tracking_objs):
 		PyPR2.updateHeadPos( chx, chy )
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 1  )
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 5  )
 	
 	
       	'''	
