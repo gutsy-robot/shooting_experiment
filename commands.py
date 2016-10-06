@@ -179,10 +179,10 @@ def onHumanDetected(objtype, trackid, nameid, status):
 		torso_position_counter +=1
 	#isStationery()
 	
-
+elapsed_time
 
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y
+  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time
   
   elapsed_time = time.time() - start_time
   
@@ -320,7 +320,7 @@ def timerActions( id ):
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d
+	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time
 
 	
 
