@@ -182,7 +182,7 @@ busymoving=0
 msgTryTimer=-1
 
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time
+  global msgTryTimer,busy_moving,track_x,track_d,track_y,last_action_counter,d,start_time,x,y
   
   elapsed_time = time.time() - start_time
   
@@ -193,9 +193,9 @@ def timerActions( id ):
        #time.sleep(1)
     	adjust_to_shooting()
 	
-	track_x.append(focus_obj['est_pos'][0])
-	track_y.append(focus_obj['est_pos'][1])
-	track_d.append((elapsed_time,focus_obj['est_pos'][0],focus_obj['est_pos'][0]))
+	track_x.append(x)
+	track_y.append(y)
+	track_d.append((elapsed_time,x,y))
 	
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
@@ -322,11 +322,16 @@ def timerActions( id ):
 def onHumanTracking(tracking_objs):
 	global busymoving
 	SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer,d
-	PyPR2.onTimer =  timerActions
+	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y
 
+	PyPR2.onTimer =  timerActions
+	if msgTryTimer==-1:
+	   #PyPR2.tuckBothArms()
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
+	x = focus_obj['est_pos'][0]
+	y = focus_obj['est_pos'][1]
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
@@ -344,9 +349,7 @@ def onHumanTracking(tracking_objs):
       	if math.fabs(ofs_y) > 10:
         	chy = ofs_y * 90.0 / 640 * 0.01745329252
 		PyPR2.updateHeadPos( chx, chy )
-	if msgTryTimer==-1:
-	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
+	
 	
 	
       	'''	
