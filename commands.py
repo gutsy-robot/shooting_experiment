@@ -316,7 +316,7 @@ def timerActions( id ):
   #else:
   #  timermanager.onTimerCall( id )
 
-
+d=0
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
@@ -328,6 +328,8 @@ def onHumanTracking(tracking_objs):
 	focus_obj = tracking_objs[object_index]
 	x = focus_obj['est_pos'][0]
 	y = focus_obj['est_pos'][1]
+	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
+		PyPR2.say("good")
 	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
 	#track_human(focus_obj)
 
