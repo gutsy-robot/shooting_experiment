@@ -193,8 +193,8 @@ def timerActions( id ):
        #time.sleep(1)
 	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
 		PyPR2.tuckBothArms()
-       d = math.sqrt(math.pow(x,2)+math.pow(y,2))
-       adjust_to_shooting()
+        d = math.sqrt(math.pow(x,2)+math.pow(y,2))
+        adjust_to_shooting()
 	
 
 	'''
