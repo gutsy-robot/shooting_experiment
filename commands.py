@@ -184,21 +184,24 @@ elapsed_time=0
 def timerActions( id ):
   global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time
   
-  elapsed_time = time.time() - start_time
+  
   
   if msgTryTimer == id :
     #PyPR2.removeTimer( msgTryTimer )
         #msgTryTimer += 1
     #while True:
        #time.sleep(1)
-    	adjust_to_shooting()
+	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
+		PyPR2.tuckBothArms()
+       d = math.sqrt(math.pow(x,2)+math.pow(y,2))
+       adjust_to_shooting()
 	
 
-	
+	'''
 	with open(csvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(track_d)
-	
+	'''
 	
 	#PyPR2.moveTorsoBy(0.03,5)
 	#if abs(previous_pos - focus_obj['est_pos'][0])< 0.1:	
@@ -323,19 +326,21 @@ def onHumanTracking(tracking_objs):
 	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time
 
 	
-
+	elapsed_time = time.time() - start_time
 	object_index = closest_obj_index(tracking_objs)
 	focus_obj = tracking_objs[object_index]
 	x = focus_obj['est_pos'][0]
 	y = focus_obj['est_pos'][1]
+	'''
 	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
 		PyPR2.say("good")
-	d = math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))
+	d = math.sqrt(math.pow(x,2)+math.pow(y,2))
 	#track_human(focus_obj)
+	'''
 
 	track_x.append(x)
 	track_y.append(y)
-	track_d.append((elapsed_time,x,y))
+	#track_d.append((elapsed_time,x,y))
 	mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
 	mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
@@ -354,7 +359,7 @@ def onHumanTracking(tracking_objs):
 	PyPR2.onTimer =  timerActions
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 0.2  )
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 2  ) 	#changed just for testing the isStationeryCase()
 	
       	'''	
 
