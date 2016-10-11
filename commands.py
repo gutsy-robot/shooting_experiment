@@ -509,7 +509,7 @@ def alt_bow_arrow2():
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	PyPR2.moveHeadTo(0.0,0.1)
-'''
+
 laserdata=[(0.0,0.0)]
 def laserCallback(rang,intensity):
 	global laserdata
@@ -521,3 +521,6 @@ def laserCallback(rang,intensity):
     	         writer.writerows(laserdata)
 
 '''
+
+
+
