@@ -28,7 +28,7 @@ sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
 
 
 
-
+d=0
 s= positions.s
 right_shooting = positions.right_shooting
 
@@ -95,7 +95,7 @@ last_action_counter = 0
 sub_action_flag =1 
 csvfile = "/home/demoshare/shooting_experiment/test12.csv"
 
-
+lasercsvfile = "/home/demoshare/shooting_experiment/test15.csv"
 
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
@@ -319,7 +319,7 @@ def timerActions( id ):
   #else:
   #  timermanager.onTimerCall( id )
 
-d=0
+
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
@@ -510,3 +510,11 @@ def alt_bow_arrow2():
 
 	PyPR2.moveHeadTo(0.0,0.1)
 
+laserdata=[]
+def laserCallback(rang,intensity):
+	global laserdata
+	
+	laserdata.append(rang)
+	with open(lasercsvfile, "w") as output:
+   		 writer = csv.writer(output, lineterminator='\n')
+    	         writer.writerows(track_d)
