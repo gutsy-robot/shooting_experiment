@@ -513,7 +513,7 @@ def alt_bow_arrow2():
 laserdata=[]
 def laserCallback(rang,intensity):
 	global laserdata
-	if rang > 6
+	if rang > 6.0
 	laserdata.append(rang)
 	with open(lasercsvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
