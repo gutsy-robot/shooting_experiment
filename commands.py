@@ -517,4 +517,4 @@ def laserCallback(rang,intensity):
 	laserdata.append(rang)
 	with open(lasercsvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
-    	         writer.writerows(track_d)
+    	         writer.writerows(laserdata)
