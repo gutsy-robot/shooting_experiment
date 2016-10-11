@@ -95,7 +95,7 @@ last_action_counter = 0
 sub_action_flag =1 
 csvfile = "/home/demoshare/shooting_experiment/test12.csv"
 
-lasercsvfile = "/home/demoshare/shooting_experiment/test15.csv"
+lasercsvfile = "/home/demoshare/shooting_experiment/test16.csv"
 
 def revolve_cw():
 	(a,b)= PyPR2.getHeadPos()
@@ -513,7 +513,7 @@ def alt_bow_arrow2():
 laserdata=[]
 def laserCallback(rang,intensity):
 	global laserdata
-	
+	if rang > 6
 	laserdata.append(rang)
 	with open(lasercsvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
