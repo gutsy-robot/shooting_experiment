@@ -182,7 +182,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 elapsed_time=0
 
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time
+  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time,focus_obj
   
   
   
@@ -323,7 +323,7 @@ def timerActions( id ):
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time
+	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time,focus_obj
 
 	
 	elapsed_time = time.time() - start_time
@@ -482,7 +482,7 @@ def shooting_tracking(objtype,nameid,trackid,status):
 	alt_bow_arrow()
 	time.sleep(3)
 	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
-'''	
+	
 
 def alt_bow_arrow2():
 	PyPR2.openGripper(1)
@@ -509,7 +509,7 @@ def alt_bow_arrow2():
 	PyPR2.moveArmWithJointPos(**alt_right_release)
 
 	PyPR2.moveHeadTo(0.0,0.1)
-
+'''
 laserdata=[(0.0,0.0)]
 def laserCallback(rang,intensity):
 	global laserdata
@@ -519,3 +519,5 @@ def laserCallback(rang,intensity):
 	with open(lasercsvfile, "w") as output:
    		 writer = csv.writer(output, lineterminator='\n')
     	         writer.writerows(laserdata)
+
+'''
