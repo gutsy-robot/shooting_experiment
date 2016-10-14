@@ -198,6 +198,7 @@ def timerActions( id ):
 	obj_st = tracking_objs[object_index]
 	if abs(a-obj_st['est_pos'][0]) < 0.2:
 		PyPR2.moveBodyTo(0.1,0.0,0.0,1)
+	a = obj_st['est_pos'][0]
         d = math.sqrt(math.pow(x,2)+math.pow(y,2))
         adjust_to_shooting()
 	
