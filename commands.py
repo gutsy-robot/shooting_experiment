@@ -196,8 +196,10 @@ def timerActions( id ):
        #time.sleep(1)
 	
 	if abs(a-focus_obj['est_pos'][0]) < 0.2:
+		a = focus_obj['est_pos'][0]
 		PyPR2.moveBodyTo(0.1,0.0,0.0,1)
-	a = focus_obj['est_pos'][0]
+	else:
+		a = focus_obj['est_pos'][0]
         d = math.sqrt(math.pow(x,2)+math.pow(y,2))
         adjust_to_shooting()
 	
