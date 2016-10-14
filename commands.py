@@ -195,7 +195,7 @@ def timerActions( id ):
     #while True:
        #time.sleep(1)
 	
-	if abs(a-focus_obj['est_pos'][0]) < 0.2:
+	if abs(a-focus_obj['est_pos'][0]) < 0.04:
 		a = focus_obj['est_pos'][0]
 		PyPR2.moveBodyTo(0.1,0.0,0.0,1)
 	else:
@@ -366,7 +366,7 @@ def onHumanTracking(tracking_objs):
 	PyPR2.onTimer =  timerActions
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 2  ) 	#changed just for testing the isStationeryCase()
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 10  ) 	#changed just for testing the isStationeryCase()
 	
       	'''	
 
