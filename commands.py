@@ -165,7 +165,7 @@ def bow_arrow():
 	PyPR2.moveArmWithJointPos(**right_up)
 '''	
 def onHumanDetected(objtype, trackid, nameid, status):	
-	global HUMAN_DETECTION_COUNTER,start_time,torso_position_counter
+	global HUMAN_DETECTION_COUNTER,start_time,torso_position_counter,msgTryTimer
 	#PyPR2.say("Target Detect ed")
 	#PyPR2.moveTorsoBy(0.1,3)
 	#PyPR2.moveBodyTo(0.1,0.0,0.0,4)
@@ -173,6 +173,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	
 		track_x.append(('x','time'))
 	HUMAN_DETECTION_COUNTER+=1
+	msgTryTimer=-1
 	start_time = time.time()
 	if torso_position_counter ==0:
 		PyPR2.moveTorsoBy(0.1,3)
@@ -330,7 +331,11 @@ def timerActions( id ):
 def onHumanTracking(tracking_objs):
 	#global busymoving
 	#SHOOTING_TAG = 0
-	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time,focus_obj
+	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time,focus_obj,HUMAN_DETECTION_COUNTER
+	
+	if len(tracking_objs)==0:
+		PyPR2.removeTimer(msgTryTimer)
+		HUMAN_DETECTION_COUNTER=0
 
 	
 	elapsed_time = time.time() - start_time
