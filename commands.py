@@ -371,7 +371,7 @@ def onHumanTracking(tracking_objs):
 	PyPR2.onTimer =  timerActions
 	if msgTryTimer==-1:
 	   #PyPR2.tuckBothArms()
-	   msgTryTimer = PyPR2.addTimer( 1, -1, 10  ) 	#changed just for testing the isStationeryCase()
+	   msgTryTimer = PyPR2.addTimer( 1, -1, 2  ) 	#changed just for testing the isStationeryCase()
 	
       	'''	
 
