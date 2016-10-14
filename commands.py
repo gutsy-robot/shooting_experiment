@@ -180,9 +180,12 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	#isStationery()
 	
 elapsed_time=0
-
+a =0.0
 def timerActions( id ):
-  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time,focus_obj
+  global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time,focus_obj,a
+
+
+	
   
   
   
@@ -191,8 +194,10 @@ def timerActions( id ):
         #msgTryTimer += 1
     #while True:
        #time.sleep(1)
-	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
-		PyPR2.tuckBothArms()
+	object_index = closest_obj_index(tracking_objs)
+	obj_st = tracking_objs[object_index]
+	if abs(a-obj_st['est_pos'][0]) < 0.2:
+		PyPR2.moveBodyTo(0.1,0.0,0.0,1)
         d = math.sqrt(math.pow(x,2)+math.pow(y,2))
         adjust_to_shooting()
 	
@@ -209,7 +214,7 @@ def timerActions( id ):
 	#adjust_to_shooting()
         #if busymoving>0: busymoving-=1
 
-	if busymoving==0 and d>=3.5:
+	if d>=3.5:
 		if last_action_counter <4 and last_action_counter!=0:
 			#obj.larm_reference = True	
 			#obj.arm_down()
@@ -229,7 +234,7 @@ def timerActions( id ):
 			PyPR2.moveArmWithJointPos(**left_shooting)
 			last_action_counter=4
 			#busymoving=5
-	elif busymoving==0 and  d<=3.5 and d>3:
+	elif d<=3.5 and d>3:
 		if last_action_counter <3 and last_action_counter!=0:
 				PyPR2.moveArmWithJointPos(**shooting_down)
 				#obj.larm_reference = False
@@ -263,7 +268,7 @@ def timerActions( id ):
 	              
 				
 
-	elif busymoving==0 and d<=3 and d >2:
+	elif d<=3 and d >2:
 			
 				if last_action_counter <2 and last_action_counter!=0:
 					
@@ -284,7 +289,7 @@ def timerActions( id ):
 				#previous_pos = focus_obj['est_pos'][0]
 				
 	                #movement_tracker.append(str(CONDITION_TAG)+":"+str(focus_obj['est_pos']))
-	elif busymoving==0 and  d <2 and d>1 :
+	elif d <2 and d>1 :
 
 			if last_action_counter ==1:
 					PyPR2.say("Move")
@@ -310,7 +315,7 @@ def timerActions( id ):
 	
 			
 	
-	elif busymoving==0 :	
+	else :	
 		#busymoving=10
 		#PyPR2.moveBodyTo(-0.025,0.0,0.0,0.1)
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
