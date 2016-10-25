@@ -11,7 +11,7 @@ alt_left_release = {'l_elbow_flex_joint': -1.2864057481922857, 'l_shoulder_lift_
 
 
 
-right_correct = {'r_elbow_flex_joint': -0.33743373507326135, 'r_shoulder_lift_joint': 0.17942583190454836, 'r_upper_arm_roll_joint': 0.08342406204174635, 'r_wrist_roll_joint': 2.615153367071878, 'r_shoulder_pan_joint': 0.2898177571057483, 'r_forearm_roll_joint': 0.19540745971899343, 'r_wrist_flex_joint': -0.08124983238748584}
+right_correct = {'r_elbow_flex_joint': -0.743373507326135, 'r_shoulder_lift_joint': 0.17942583190454836, 'r_upper_arm_roll_joint': 0.08342406204174635, 'r_wrist_roll_joint': 2.615153367071878, 'r_shoulder_pan_joint': 0.2898177571057483, 'r_forearm_roll_joint': 0.19540745971899343, 'r_wrist_flex_joint': -0.08124983238748584}
 
 left_correct = {'l_wrist_roll_joint': 3.1631247878462156, 'l_forearm_roll_joint': 1.6258502258324532, 'l_elbow_flex_joint': -1.4562217926451637, 'l_shoulder_lift_joint': -0.0005921644617311818, 'l_upper_arm_roll_joint': 0.8147233204559865, 'l_wrist_flex_joint': -2.0066997980349512, 'l_shoulder_pan_joint': 0.19468851472847648}
 
