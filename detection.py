@@ -1,5 +1,6 @@
 
 import PyPR2
+import math
 
 class Detection(object):
   LOST_OBJ = 0
