@@ -29,6 +29,8 @@ HUMAN_COUNTER=0
 no_objTracker = []
 
 st_time = time.time()
+a=0
+b=0
 
 def onHumanDetected(objtype, nameid, trackid, status):
 	PyPR2.moveTorsoBy(0.1,2)
@@ -36,26 +38,35 @@ def onHumanDetected(objtype, nameid, trackid, status):
 
 
 def onHumanTracking(tracking_objs):
- global HUMAN_COUNTER, st_time
+ 	global HUMAN_COUNTER, st_time,a,b
  
-	#focus_obj = tracking_objs[object_index]
+	#focus_obj = tracking_objs[object_inde x]
 
 	
- if len(tracking_objs) == 0:
+ 	if len(tracking_objs) == 0:
 		if HUMAN_COUNTER !=0:
+			PyPR2.removeTimer(msgTryTimer)
+			msgTryTimer = -1
 			st_time = time.time()
 			HUMAN_COUNTER =0
-
+			
 		
 			
+		else:
+			
+			HUMAN_COUNTER=0
+			a +=1
 
- else:
-		if HUMAN_DETECTION_COUNTER ==0:
+ 	else:
+		if HUMAN_COUNTER ==0:
+			PyPR2.onTimer = timerActions
+			msgTryTimer = PyPR2.addtimer(1,-1,0.5)
+			b +=1
 			elapsed_time = time.time() - st_time
 			no_objTracker.append(elapsed_time)
-			HUMAN_DETECTION_COUNTER= len(tracking_objs)
+			HUMAN_COUNTER= len(tracking_objs)
 			
-
+		object_index = closest_obj_index(tracking_objs)
 		focus_obj = tracking_objs[object_index]
 
 
@@ -83,18 +94,21 @@ def onHumanTracking(tracking_objs):
 
 
 
+def timerActions(id):
+	global msgTryTimer,x,y 
+	
+
+	if msgTryTimer == id :
+		adjust_to_shooting()
 
 
+last_proximity = False
+def adjust_to_shooting():
+	global last_proximity
+	proximity = check_head_proximity()
 
-
-
-
-
-
-
-
-
-
+	if proximity== True and last_proximity==False:
+		PyPR2.moveBodyTo(0.0,0.0,(0.65)*PyPR2.getHeadPos()[0],1)
 
 def closest_obj_index(tracking_objs):
 	A=[]
