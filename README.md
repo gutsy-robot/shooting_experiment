@@ -3,13 +3,13 @@ This is the code for a HRI experiment done using a PR2. The PR2 was placed in a 
 
 Dependencies :
 
-Magiks Inverse Kinematics: https://github.com/uts-magic-lab/Magiks<https://github.com/uts-magic-lab/Magiks>
+Magiks Inverse Kinematics: <https://github.com/uts-magic-lab/Magiks>
 
-Pyride PR2: https://github.com/uts-magic-lab/pyride_pr2 <https://github.com/uts-magic-lab/pyride_pr2>
+Pyride PR2: <https://github.com/uts-magic-lab/pyride_pr2>
 
 
-Demo video: https://www.youtube.com/watch?v=ZPEfaC-H8QY <https://www.youtube.com/watch?v=ZPEfaC-H8QY>
+Demo video:  <https://www.youtube.com/watch?v=ZPEfaC-H8QY>
 
-HRI'17 Paper: https://dl.acm.org/citation.cfm?id=3029798.3038387 <https://dl.acm.org/citation.cfm?id=3029798.3038387>
+HRI'17 Paper:  <https://dl.acm.org/citation.cfm?id=3029798.3038387>
 
 
