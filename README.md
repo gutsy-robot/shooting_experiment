@@ -1,4 +1,4 @@
-This is the code for a HRI experiment done using a PR2. The PR2 was placed in a publicly accessible building, where it worked as an autonomous security guard. The main aim of the experiment was to do a qualitative and quantative analysis of the factors that affect human obedience in interactions with robots in position of authority.
+This is the code for my experiments on Robot Authority and Human Obedience using Magic Lab's PR2 robo: gutsy. The PR2 was placed in a publicly accessible building, where it worked as an autonomous security guard. The main aim of the experiment was to do a qualitative and quantative analysis of the factors that affect human obedience in interactions with robots in position of authority.
 
 
 Dependencies :
