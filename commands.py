@@ -9,23 +9,6 @@ import math
 import logging
 import csv
 import operator
-'''import pandas as pd
-import numpy as np
-import plotly.plotly as py
-import plotly.graph_objs as go
-'''
-numpy_path      = '/usr/lib/python2.7/dist-packages/'
-sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
-pyinterval_path = '/usr/local/lib/python2.7/dist-packages/pyinterval-1.0b21-py2.7-linux-x86_64.egg/'
-mtpltlib_path   = '/usr/lib/pymodules/python2.7'
-
-
-sys.path.append(sympy_path)
-sys.path.append(numpy_path)
-sys.path.append(pyinterval_path)
-sys.path.append(mtpltlib_path)
-sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
-
 
 
 d=0
@@ -143,27 +126,6 @@ def find_human():
 
 		
 	
-		
-
-	
-		
-		
-
-
-'''
-def bow_arrow():
-	PyPR2.moveArmWithJointPos(**right_shooting)
-	PyPR2.moveArmWithJointPos(**left_shooting)
-	PyPR2.moveHeadTo(0.0,0.14)
-	time.sleep(10)
-	PyPR2.closeGripper(2)
-	time.sleep(3)
-	PyPR2.moveArmWithJointPos(**best_pullback)
-	PyPR2.moveHeadto(0.0,0.0)
-	time.sleep(10)
-	PyPR2.openGripper(2)
-	PyPR2.moveArmWithJointPos(**right_up)
-'''	
 def onHumanDetected(objtype, trackid, nameid, status):	
 	global HUMAN_DETECTION_COUNTER,start_time,torso_position_counter,msgTryTimer
 	#PyPR2.say("Target Detect ed")
@@ -258,17 +220,7 @@ def timerActions( id ):
 				PyPR2.moveArmWithJointPos(**alt_right_shooting)
 				PyPR2.moveArmWithJointPos(**left_shooting)
 				last_action_counter=3		
-				#adjust_to_shooting()
-			
-			
-			
-			#PyPR2.moveBodyTo(0.1,0.0,0.0,1)
-				#PyPR2.moveBodyTo(0.0,0.0,chx/2.0,2)
-				#previous_pos = focus_obj['est_pos'][0]
-			#PyPR2.moveArmWithJointPos(**left_shooting)	
-			#PyPR2.moveArmWithJointPos(**alt_right_intermediate)	
-			#PyPR2.moveBodyTo(0.2,0.0,0.0,1)		
-	              
+
 				
 
 	elif d<=3 and d >2:
@@ -301,36 +253,15 @@ def timerActions( id ):
 			elif last_action_counter >=2:
 					PyPR2.moveArmWithJointPos(**left_shooting)
 					PyPR2.moveArmWithJointPos(**alt_right_shooting)
-					
-
-			#PyPR2.closeGripper(2)
-			#time.sleep(2)
-			#PyPR2.moveHeadTo(0.0,0.18)
-			#PyPR2.moveArmWithJointPos(**best_pullback)
-	
-	
-			#time.sleep(3)
-			#PyPR2.moveHeadTo(0.0,0.1)
-			#PyPR2.openGripper(2)
-			#PyPR2.moveHeadTo(0.0,0.0)
-			#PyPR2.moveArmWithJointPos(**alt_right_release)
-
-	
 			
 	
 	else :	
-		#busymoving=10
-		#PyPR2.moveBodyTo(-0.025,0.0,0.0,0.1)
 		PyPR2.moveArmWithJointPos(**alt_right_shooting)
 		PyPr2.moveArmWithJointPos(**left_shooting)	
 
-  #else:
-  #  timermanager.onTimerCall( id )
 
 
 def onHumanTracking(tracking_objs):
-	#global busymoving
-	#SHOOTING_TAG = 0
 	global start_time,last_action_counter,movement_tracker,msgTryTimer,d,x,y,track_x,track_y,track_d,elapsed_time,focus_obj,HUMAN_DETECTION_COUNTER
 	
 	if len(tracking_objs)==0:
@@ -343,13 +274,6 @@ def onHumanTracking(tracking_objs):
 	focus_obj = tracking_objs[object_index]
 	x = focus_obj['est_pos'][0]
 	y = focus_obj['est_pos'][1]
-	'''
-	if abs(d-math.sqrt(math.pow(focus_obj['est_pos'][0],2)+math.pow(focus_obj['est_pos'][1],2))) < 0.05:
-		PyPR2.say("good")
-	d = math.sqrt(math.pow(x,2)+math.pow(y,2))
-	#track_human(focus_obj)
-	'''
-
 	track_x.append(x)
 	track_y.append(y)
 	#track_d.append((elapsed_time,x,y))
@@ -487,52 +411,7 @@ def closest_obj_index(tracking_objs):
 		A.append(math.sqrt(math.pow(tracking_objs[i]['est_pos'][0],2)+math.pow(tracking_objs[i]['est_pos'][1],2)))
 	index_min = min(xrange(len(A)), key=A.__getitem__)
 	return index_min
-'''
-def shooting_tracking(objtype,nameid,trackid,status):
-	global HUMAN_DETECTION_COUNTER
-	HUMAN_DETECTION_COUNTER+=1
-	alt_bow_arrow()
-	time.sleep(3)
-	PyPR2.registerHumanDetectTracking(onHumanDetected,onHumanTracking)
-	
 
-def alt_bow_arrow2():
-	PyPR2.openGripper(1)
-	PyPR2.moveHeadTo(0.0,0.15)
-	PyPR2.moveArmWithJointPos(**positions.right_shooting)
-	PyPR2.openGripper(1)
-	time.sleep(2)
-	PyPR2.moveHeadTo(0.0,0.0)
-	PyPR2.moveArmWithJointPos(**positions.alt_left_intermediate)
-	PyPR2.moveHeadTo(0.0,0.3)
-	time.sleep(3)
-	PyPR2.moveArmWithJointPos(**positions.alt_left_shooting)
-	time.sleep(3)
-	PyPR2.closeGripper(1)
-	time.sleep(2)
-	PyPR2.moveHeadTo(0.0,0.18)
-	PyPR2.moveArmWithJointPos(**positions.best_pullback_left)
-	
-	
-	time.sleep(5)
-	PyPR2.moveHeadTo(0.0,0.1)
-	PyPR2.openGripper(2)
-	#PyPR2.moveHeadTo(0.0,0.0)
-	PyPR2.moveArmWithJointPos(**alt_right_release)
-
-	PyPR2.moveHeadTo(0.0,0.1)
-
-laserdata=[(0.0,0.0)]
-def laserCallback(rang,intensity):
-	global laserdata
-	#if rang > 6.0:
-	
-	laserdata.append(rang)
-	with open(lasercsvfile, "w") as output:
-   		 writer = csv.writer(output, lineterminator='\n')
-    	         writer.writerows(laserdata)
-
-'''
 
 
 

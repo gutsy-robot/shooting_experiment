@@ -32,7 +32,7 @@ def onHumanDetected(objtype, trackid, nameid, status):
 	LostConnectionCounter += 1
 	
 def timerActions( id ):
-  #global msgTryTimer,busy_moving,track_d,last_action_counter,d,start_time,x,y,elapsed_time,focus_obj,a
+  
 
   	global a,b,x, y , last_x, tracking_data, csvFile, csvFileCounter,LostConnectionCounter,NumPeople, msgTryTimer, NEW_INTERACTION_INITIALISER
 	
@@ -102,13 +102,12 @@ def onHumanTracking(tracking_objs):
 			focus_obj = tracking_objs[object_index]
 			x = focus_obj['est_pos'][0]
 			y = focus_obj['est_pos'][1]
-	#		checkX.append(x,y)
+
 
 			mid_x = focus_obj['bound'][0] + focus_obj['bound'][2] / 2
       			
 			mid_y = focus_obj['bound'][1] + focus_obj['bound'][3] / 2
-     			#print "track obj {} mid pt ({}.{})".format(focus_obj['track_id'],mid_x,mid_y)
-            #		a += 1
+     			
 			ofs_x = mid_x - 320
     			ofs_y = mid_y - 240
       			chx = chy = 0.0
@@ -119,9 +118,9 @@ def onHumanTracking(tracking_objs):
 				
    			if math.fabs(ofs_y) > 10:
         			chy = ofs_y * 90.0 / 640 * 0.01745329252
-	#		b+=1
+
 			PyPR2.updateHeadPos( chx, chy )
-	#		c+=1
+
 	
 
 
@@ -137,11 +136,6 @@ def closest_obj_index(tracking_objs):
 def restoreInitialState():
 	global LostConnectionCounter, NumPeople, tracking_data, NEW_INTERACTION_INITIALISER,csvFile,csvFileCounter,last_x
 
-	#add moveBase and hands to initial position
-	#PyPR2.moveArmWithJointPos(**initialHandRight)
-	#PyPR2.moveArmWithJointPos(**initialHandLeft)
-	#PyPR2.moveHeadTo(0.0,0.1) 											#moving head to home position
-	#PyPR2.moveTorsoBy(-0.1,3)
 	PyPR2.tuckBothArms()												#for the time being
 
 	#NumPeople = 0

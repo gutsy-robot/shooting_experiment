@@ -8,22 +8,7 @@ import time
 import positions
 import sys
 import operator
-'''import pandas as pd
-import numpy as np
-import plotly.plotly as py
-import plotly.graph_objs as go
-'''
-numpy_path      = '/usr/lib/python2.7/dist-packages/'
-sympy_path      = '/usr/local/lib/python2.7/dist-packages/'
-pyinterval_path = '/usr/local/lib/python2.7/dist-packages/pyinterval-1.0b21-py2.7-linux-x86_64.egg/'
-mtpltlib_path   = '/usr/lib/pymodules/python2.7'
 
-
-sys.path.append(sympy_path)
-sys.path.append(numpy_path)
-sys.path.append(pyinterval_path)
-sys.path.append(mtpltlib_path)
-sys.path.append('/home/demoshare/shooting_experiment/Magiks/')
 
 
 
@@ -97,28 +82,8 @@ def onHumanTracking(tracking_objs):
 def timerActions(id):
 	global msgTryTimer,x,y,d,track_data,csvCounter,csvFile
 
-	'''	
-	if previous_position > x:
-			isMovingForward = False
-			previous_position = x
-	else:
-			isMovingForward = True
-			previous_position = True
-	'''
 	if msgTryTimer == id :
-		'''
-		if isMovingForward == True:
-			PyPR2.say("Move, Back")
-		else:
-			PyPR2.say("going back,,, goood")
-		
-		#if abs(y) >0.3:
-		if abs(movementCounter)< 0.3:
-				track_y.append(y)	
-				movementCounter +=y
-				PyPR2.moveBodyTo(0.0,y,0.0,2.0)
-			
-		'''
+
 		track_data.append((x,y,d,time.time()))
 		updateCsv()
 		with open(csvFile, "w") as output:
